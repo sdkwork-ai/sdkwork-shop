@@ -1,4 +1,4 @@
-import { StringUtils } from '@sdkwork/sdk-common/utils';
+import { uuid } from '@sdkwork/utils/id';
 
 export interface SdkworkWriteCommandParams {
   idempotencyKey: string;
@@ -42,7 +42,7 @@ function canonicalJsonString(value: unknown): string {
 export function createSdkworkWriteCommandParams(
   scope: string,
   payload: unknown,
-  idempotencyKey = StringUtils.uuid(),
+  idempotencyKey = uuid(),
 ): SdkworkWriteCommandParams {
   const sdkworkRequestHash = [scope, canonicalJsonString(payload)]
     .map(normalizeRequestHashPart)

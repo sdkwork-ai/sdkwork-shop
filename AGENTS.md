@@ -26,7 +26,7 @@ Application manifests live under `apps/*/sdkwork.app.config.json`. This reposito
 - App API prefix: `/app/v3/api/shops`.
 - Backend API prefix: `/backend/v3/api/shops`.
 - Rust HTTP runtimes integrate `sdkwork-web-framework`; database lifecycle uses `sdkwork-database`.
-- TypeScript packages consume `@sdkwork/utils-typescript` for shared helpers — no local duplicates.
+- TypeScript packages consume `@sdkwork/utils` for shared helpers — no local duplicates.
 - `sdkwork-discovery` is deferred until RPC/cloud-split deployment exists.
 - Generated SDK output under `sdks/**/generated/**` is generator-owned.
 

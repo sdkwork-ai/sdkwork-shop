@@ -42,6 +42,7 @@
     "@sdkwork/sdk-common": "catalog:",
     "@sdkwork/shop-app-sdk": "workspace:*",
     "@sdkwork/shop-contracts": "workspace:*",
-    "@sdkwork/shop-service": "workspace:*"
+    "@sdkwork/shop-service": "workspace:*",
+    "@sdkwork/utils": "workspace:*"
   }
 }
