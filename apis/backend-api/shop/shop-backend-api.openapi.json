@@ -120,7 +120,7 @@
           "shops"
         ],
         "summary": "Shops management list.",
-        "operationId": "shops.management.list",
+        "operationId": "management.list",
         "parameters": [
           {
             "name": "q",
@@ -270,7 +270,7 @@
           "shops"
         ],
         "summary": "Shops create.",
-        "operationId": "shops.create",
+        "operationId": "create",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -278,7 +278,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -392,7 +392,7 @@
           "shops"
         ],
         "summary": "Shops management retrieve.",
-        "operationId": "shops.management.retrieve",
+        "operationId": "management.retrieve",
         "parameters": [
           {
             "name": "shopId",
@@ -497,7 +497,7 @@
           "shops"
         ],
         "summary": "Shops update.",
-        "operationId": "shops.update",
+        "operationId": "update",
         "parameters": [
           {
             "name": "shopId",
@@ -513,7 +513,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -627,7 +627,7 @@
           "shops"
         ],
         "summary": "Shops category Bindings list.",
-        "operationId": "shops.categoryBindings.list",
+        "operationId": "categoryBindings.list",
         "parameters": [
           {
             "name": "shopId",
@@ -785,7 +785,7 @@
           "shops"
         ],
         "summary": "Shops category Bindings upsert.",
-        "operationId": "shops.categoryBindings.update",
+        "operationId": "categoryBindings.update",
         "parameters": [
           {
             "name": "shopId",
@@ -801,7 +801,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -915,7 +915,7 @@
           "shops"
         ],
         "summary": "Shops brand Authorizations list.",
-        "operationId": "shops.brandAuthorizations.list",
+        "operationId": "brandAuthorizations.list",
         "parameters": [
           {
             "name": "shopId",
@@ -1057,7 +1057,7 @@
           "shops"
         ],
         "summary": "Shops brand Authorizations upsert.",
-        "operationId": "shops.brandAuthorizations.update",
+        "operationId": "brandAuthorizations.update",
         "parameters": [
           {
             "name": "shopId",
@@ -1073,7 +1073,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -1187,7 +1187,7 @@
           "shops"
         ],
         "summary": "Shops qualifications list.",
-        "operationId": "shops.qualifications.list",
+        "operationId": "qualifications.list",
         "parameters": [
           {
             "name": "shopId",
@@ -1345,7 +1345,7 @@
           "shops"
         ],
         "summary": "Shops qualifications upsert.",
-        "operationId": "shops.qualifications.update",
+        "operationId": "qualifications.update",
         "parameters": [
           {
             "name": "shopId",
@@ -1361,7 +1361,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -1475,7 +1475,7 @@
           "shops"
         ],
         "summary": "Shops customer Services list.",
-        "operationId": "shops.customerServices.list",
+        "operationId": "customerServices.list",
         "parameters": [
           {
             "name": "shopId",
@@ -1625,7 +1625,7 @@
           "shops"
         ],
         "summary": "Shops customer Services upsert.",
-        "operationId": "shops.customerServices.update",
+        "operationId": "customerServices.update",
         "parameters": [
           {
             "name": "shopId",
@@ -1641,7 +1641,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -1755,7 +1755,7 @@
           "shops"
         ],
         "summary": "Shops return Addresses list.",
-        "operationId": "shops.returnAddresses.list",
+        "operationId": "returnAddresses.list",
         "parameters": [
           {
             "name": "shopId",
@@ -1905,7 +1905,7 @@
           "shops"
         ],
         "summary": "Shops return Addresses upsert.",
-        "operationId": "shops.returnAddresses.update",
+        "operationId": "returnAddresses.update",
         "parameters": [
           {
             "name": "shopId",
@@ -1921,7 +1921,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -2035,7 +2035,7 @@
           "shops"
         ],
         "summary": "Shops shipping Templates list.",
-        "operationId": "shops.shippingTemplates.list",
+        "operationId": "shippingTemplates.list",
         "parameters": [
           {
             "name": "shopId",
@@ -2185,7 +2185,7 @@
           "shops"
         ],
         "summary": "Shops shipping Templates upsert.",
-        "operationId": "shops.shippingTemplates.update",
+        "operationId": "shippingTemplates.update",
         "parameters": [
           {
             "name": "shopId",
@@ -2201,7 +2201,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -2315,7 +2315,7 @@
           "shops"
         ],
         "summary": "Shops verifications list.",
-        "operationId": "shops.verifications.list",
+        "operationId": "verifications.list",
         "parameters": [
           {
             "name": "shopId",
@@ -2459,7 +2459,7 @@
           "shops"
         ],
         "summary": "Shops verifications update.",
-        "operationId": "shops.verifications.update",
+        "operationId": "verifications.update",
         "parameters": [
           {
             "name": "shopId",
@@ -2483,7 +2483,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -2597,7 +2597,7 @@
           "shops"
         ],
         "summary": "Shops status Events list.",
-        "operationId": "shops.statusEvents.list",
+        "operationId": "statusEvents.list",
         "parameters": [
           {
             "name": "shopId",
@@ -2733,7 +2733,7 @@
           "shops"
         ],
         "summary": "Shops channels list.",
-        "operationId": "shops.channels.list",
+        "operationId": "channels.list",
         "parameters": [
           {
             "name": "shopId",
@@ -2875,7 +2875,7 @@
           "shops"
         ],
         "summary": "Shops channels create.",
-        "operationId": "shops.channels.create",
+        "operationId": "channels.create",
         "parameters": [
           {
             "name": "shopId",
@@ -2891,7 +2891,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -3005,7 +3005,7 @@
           "shops"
         ],
         "summary": "Shops channels update.",
-        "operationId": "shops.channels.update",
+        "operationId": "channels.update",
         "parameters": [
           {
             "name": "shopId",
@@ -3029,7 +3029,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -3143,7 +3143,7 @@
           "shops"
         ],
         "summary": "Shops fulfillment Profile retrieve.",
-        "operationId": "shops.fulfillmentProfile.retrieve",
+        "operationId": "fulfillmentProfile.retrieve",
         "parameters": [
           {
             "name": "shopId",
@@ -3248,7 +3248,7 @@
           "shops"
         ],
         "summary": "Shops fulfillment Profile update.",
-        "operationId": "shops.fulfillmentProfile.update",
+        "operationId": "fulfillmentProfile.update",
         "parameters": [
           {
             "name": "shopId",
@@ -3264,7 +3264,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -3378,7 +3378,7 @@
           "shops"
         ],
         "summary": "Shops settlement Profile retrieve.",
-        "operationId": "shops.settlementProfile.retrieve",
+        "operationId": "settlementProfile.retrieve",
         "parameters": [
           {
             "name": "shopId",
@@ -3483,7 +3483,7 @@
           "shops"
         ],
         "summary": "Shops settlement Profile update.",
-        "operationId": "shops.settlementProfile.update",
+        "operationId": "settlementProfile.update",
         "parameters": [
           {
             "name": "shopId",
@@ -3499,7 +3499,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -3613,7 +3613,7 @@
           "shops"
         ],
         "summary": "Shops settlement Profile approve.",
-        "operationId": "shops.settlementProfile.approve",
+        "operationId": "settlementProfile.approve",
         "parameters": [
           {
             "name": "shopId",
@@ -3629,7 +3629,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -3743,7 +3743,7 @@
           "shops"
         ],
         "summary": "Shops settlement Profile reject.",
-        "operationId": "shops.settlementProfile.reject",
+        "operationId": "settlementProfile.reject",
         "parameters": [
           {
             "name": "shopId",
@@ -3759,7 +3759,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -3873,7 +3873,7 @@
           "shops"
         ],
         "summary": "Shops business Hours retrieve.",
-        "operationId": "shops.businessHours.retrieve",
+        "operationId": "businessHours.retrieve",
         "parameters": [
           {
             "name": "shopId",
@@ -3978,7 +3978,7 @@
           "shops"
         ],
         "summary": "Shops business Hours update.",
-        "operationId": "shops.businessHours.update",
+        "operationId": "businessHours.update",
         "parameters": [
           {
             "name": "shopId",
@@ -3994,7 +3994,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -4108,7 +4108,7 @@
           "shops"
         ],
         "summary": "Shops service Areas list.",
-        "operationId": "shops.serviceAreas.list",
+        "operationId": "serviceAreas.list",
         "parameters": [
           {
             "name": "shopId",
@@ -4258,7 +4258,7 @@
           "shops"
         ],
         "summary": "Shops service Areas create.",
-        "operationId": "shops.serviceAreas.create",
+        "operationId": "serviceAreas.create",
         "parameters": [
           {
             "name": "shopId",
@@ -4274,7 +4274,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -4388,7 +4388,7 @@
           "shops"
         ],
         "summary": "Shops service Areas update.",
-        "operationId": "shops.serviceAreas.update",
+        "operationId": "serviceAreas.update",
         "parameters": [
           {
             "name": "shopId",
@@ -4412,7 +4412,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -4526,7 +4526,7 @@
           "shops"
         ],
         "summary": "Shops policies list.",
-        "operationId": "shops.policies.list",
+        "operationId": "policies.list",
         "parameters": [
           {
             "name": "shopId",
@@ -4668,7 +4668,7 @@
           "shops"
         ],
         "summary": "Shops policies create.",
-        "operationId": "shops.policies.create",
+        "operationId": "policies.create",
         "parameters": [
           {
             "name": "shopId",
@@ -4684,7 +4684,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -4798,7 +4798,7 @@
           "shops"
         ],
         "summary": "Shops policies update.",
-        "operationId": "shops.policies.update",
+        "operationId": "policies.update",
         "parameters": [
           {
             "name": "shopId",
@@ -4822,7 +4822,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -4936,7 +4936,7 @@
           "shops"
         ],
         "summary": "Shops deposit Account retrieve.",
-        "operationId": "shops.depositAccount.retrieve",
+        "operationId": "depositAccount.retrieve",
         "parameters": [
           {
             "name": "shopId",
@@ -5041,7 +5041,7 @@
           "shops"
         ],
         "summary": "Shops deposit Account update.",
-        "operationId": "shops.depositAccount.update",
+        "operationId": "depositAccount.update",
         "parameters": [
           {
             "name": "shopId",
@@ -5057,7 +5057,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -5171,7 +5171,7 @@
           "shops"
         ],
         "summary": "Shops deposit Account review.",
-        "operationId": "shops.depositAccount.review",
+        "operationId": "depositAccount.review",
         "parameters": [
           {
             "name": "shopId",
@@ -5187,7 +5187,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -5301,7 +5301,7 @@
           "shops"
         ],
         "summary": "Shops risk Signals list.",
-        "operationId": "shops.riskSignals.list",
+        "operationId": "riskSignals.list",
         "parameters": [
           {
             "name": "shopId",
@@ -5451,7 +5451,7 @@
           "shops"
         ],
         "summary": "Shops risk Signals create.",
-        "operationId": "shops.riskSignals.create",
+        "operationId": "riskSignals.create",
         "parameters": [
           {
             "name": "shopId",
@@ -5467,7 +5467,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -5581,7 +5581,7 @@
           "shops"
         ],
         "summary": "Shops risk Signals resolve.",
-        "operationId": "shops.riskSignals.resolve",
+        "operationId": "riskSignals.resolve",
         "parameters": [
           {
             "name": "shopId",
@@ -5605,7 +5605,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -5719,7 +5719,7 @@
           "shops"
         ],
         "summary": "Shops readiness retrieve.",
-        "operationId": "shops.readiness.retrieve",
+        "operationId": "readiness.retrieve",
         "parameters": [
           {
             "name": "shopId",
@@ -5826,7 +5826,7 @@
           "shops"
         ],
         "summary": "Shops submit Review.",
-        "operationId": "shops.submitReview",
+        "operationId": "submitReview",
         "parameters": [
           {
             "name": "shopId",
@@ -5842,7 +5842,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -5956,7 +5956,7 @@
           "shops"
         ],
         "summary": "Shops approve.",
-        "operationId": "shops.approve",
+        "operationId": "approve",
         "parameters": [
           {
             "name": "shopId",
@@ -5972,7 +5972,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -6086,7 +6086,7 @@
           "shops"
         ],
         "summary": "Shops reject.",
-        "operationId": "shops.reject",
+        "operationId": "reject",
         "parameters": [
           {
             "name": "shopId",
@@ -6102,7 +6102,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -6216,7 +6216,7 @@
           "shops"
         ],
         "summary": "Shops suspend.",
-        "operationId": "shops.suspend",
+        "operationId": "suspend",
         "parameters": [
           {
             "name": "shopId",
@@ -6232,7 +6232,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -6346,7 +6346,7 @@
           "shops"
         ],
         "summary": "Shops resume.",
-        "operationId": "shops.resume",
+        "operationId": "resume",
         "parameters": [
           {
             "name": "shopId",
@@ -6362,7 +6362,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -6476,7 +6476,7 @@
           "shops"
         ],
         "summary": "Shops close.",
-        "operationId": "shops.close",
+        "operationId": "close",
         "parameters": [
           {
             "name": "shopId",
@@ -6492,7 +6492,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."

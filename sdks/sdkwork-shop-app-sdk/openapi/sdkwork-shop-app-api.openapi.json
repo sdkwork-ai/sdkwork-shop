@@ -114,7 +114,7 @@
           "shops"
         ],
         "summary": "Shops list.",
-        "operationId": "shops.list",
+        "operationId": "list",
         "parameters": [
           {
             "name": "q",
@@ -258,7 +258,7 @@
           "shops"
         ],
         "summary": "Shops retrieve.",
-        "operationId": "shops.retrieve",
+        "operationId": "retrieve",
         "parameters": [
           {
             "name": "shopId",
@@ -388,7 +388,7 @@
           "shops"
         ],
         "summary": "Shops current retrieve.",
-        "operationId": "shops.current.retrieve",
+        "operationId": "current.retrieve",
         "parameters": [],
         "responses": {
           "200": {
@@ -509,7 +509,7 @@
           "shops"
         ],
         "summary": "Shops current dashboard retrieve.",
-        "operationId": "shops.current.dashboard.retrieve",
+        "operationId": "current.dashboard.retrieve",
         "parameters": [],
         "responses": {
           "200": {
@@ -630,7 +630,7 @@
           "shops"
         ],
         "summary": "Shops current readiness retrieve.",
-        "operationId": "shops.current.readiness.retrieve",
+        "operationId": "current.readiness.retrieve",
         "parameters": [],
         "responses": {
           "200": {
@@ -751,7 +751,7 @@
           "shops"
         ],
         "summary": "Shops current category Bindings list.",
-        "operationId": "shops.current.categoryBindings.list",
+        "operationId": "current.categoryBindings.list",
         "parameters": [
           {
             "name": "shop_category_code",
@@ -901,7 +901,7 @@
           "shops"
         ],
         "summary": "Shops current category Bindings upsert.",
-        "operationId": "shops.current.categoryBindings.update",
+        "operationId": "current.categoryBindings.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -909,7 +909,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -1046,7 +1046,7 @@
           "shops"
         ],
         "summary": "Shops current brand Authorizations list.",
-        "operationId": "shops.current.brandAuthorizations.list",
+        "operationId": "current.brandAuthorizations.list",
         "parameters": [
           {
             "name": "brand_code",
@@ -1180,7 +1180,7 @@
           "shops"
         ],
         "summary": "Shops current brand Authorizations upsert.",
-        "operationId": "shops.current.brandAuthorizations.update",
+        "operationId": "current.brandAuthorizations.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -1188,7 +1188,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -1325,7 +1325,7 @@
           "shops"
         ],
         "summary": "Shops current qualifications list.",
-        "operationId": "shops.current.qualifications.list",
+        "operationId": "current.qualifications.list",
         "parameters": [
           {
             "name": "qualification_type",
@@ -1475,7 +1475,7 @@
           "shops"
         ],
         "summary": "Shops current qualifications upsert.",
-        "operationId": "shops.current.qualifications.update",
+        "operationId": "current.qualifications.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -1483,7 +1483,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -1620,7 +1620,7 @@
           "shops"
         ],
         "summary": "Shops current customer Services list.",
-        "operationId": "shops.current.customerServices.list",
+        "operationId": "current.customerServices.list",
         "parameters": [
           {
             "name": "service_channel",
@@ -1762,7 +1762,7 @@
           "shops"
         ],
         "summary": "Shops current customer Services upsert.",
-        "operationId": "shops.current.customerServices.update",
+        "operationId": "current.customerServices.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -1770,7 +1770,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -1907,7 +1907,7 @@
           "shops"
         ],
         "summary": "Shops current return Addresses list.",
-        "operationId": "shops.current.returnAddresses.list",
+        "operationId": "current.returnAddresses.list",
         "parameters": [
           {
             "name": "address_usage",
@@ -2049,7 +2049,7 @@
           "shops"
         ],
         "summary": "Shops current return Addresses upsert.",
-        "operationId": "shops.current.returnAddresses.update",
+        "operationId": "current.returnAddresses.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -2057,7 +2057,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -2194,7 +2194,7 @@
           "shops"
         ],
         "summary": "Shops current shipping Templates list.",
-        "operationId": "shops.current.shippingTemplates.list",
+        "operationId": "current.shippingTemplates.list",
         "parameters": [
           {
             "name": "template_status",
@@ -2336,7 +2336,7 @@
           "shops"
         ],
         "summary": "Shops current shipping Templates upsert.",
-        "operationId": "shops.current.shippingTemplates.update",
+        "operationId": "current.shippingTemplates.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -2344,7 +2344,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -2481,7 +2481,7 @@
           "shops"
         ],
         "summary": "Shops current applications list.",
-        "operationId": "shops.current.applications.list",
+        "operationId": "current.applications.list",
         "parameters": [
           {
             "name": "status",
@@ -2607,7 +2607,7 @@
           "shops"
         ],
         "summary": "Shops current applications create.",
-        "operationId": "shops.current.applications.create",
+        "operationId": "current.applications.create",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -2615,7 +2615,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -2752,7 +2752,7 @@
           "shops"
         ],
         "summary": "Shops current verifications list.",
-        "operationId": "shops.current.verifications.list",
+        "operationId": "current.verifications.list",
         "parameters": [
           {
             "name": "verification_type",
@@ -2888,7 +2888,7 @@
           "shops"
         ],
         "summary": "Shops current status Events list.",
-        "operationId": "shops.current.statusEvents.list",
+        "operationId": "current.statusEvents.list",
         "parameters": [
           {
             "name": "event_type",
@@ -3016,7 +3016,7 @@
           "shops"
         ],
         "summary": "Shops current channels list.",
-        "operationId": "shops.current.channels.list",
+        "operationId": "current.channels.list",
         "parameters": [
           {
             "name": "channel_code",
@@ -3152,7 +3152,7 @@
           "shops"
         ],
         "summary": "Shops current channels update.",
-        "operationId": "shops.current.channels.update",
+        "operationId": "current.channels.update",
         "parameters": [
           {
             "name": "channelId",
@@ -3168,7 +3168,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -3305,7 +3305,7 @@
           "shops"
         ],
         "summary": "Shops current fulfillment Profile retrieve.",
-        "operationId": "shops.current.fulfillmentProfile.retrieve",
+        "operationId": "current.fulfillmentProfile.retrieve",
         "parameters": [],
         "responses": {
           "200": {
@@ -3424,7 +3424,7 @@
           "shops"
         ],
         "summary": "Shops current fulfillment Profile update.",
-        "operationId": "shops.current.fulfillmentProfile.update",
+        "operationId": "current.fulfillmentProfile.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -3432,7 +3432,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -3569,7 +3569,7 @@
           "shops"
         ],
         "summary": "Shops current settlement Profile retrieve.",
-        "operationId": "shops.current.settlementProfile.retrieve",
+        "operationId": "current.settlementProfile.retrieve",
         "parameters": [],
         "responses": {
           "200": {
@@ -3688,7 +3688,7 @@
           "shops"
         ],
         "summary": "Shops current settlement Profile update.",
-        "operationId": "shops.current.settlementProfile.update",
+        "operationId": "current.settlementProfile.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -3696,7 +3696,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -3833,7 +3833,7 @@
           "shops"
         ],
         "summary": "Shops current business Hours retrieve.",
-        "operationId": "shops.current.businessHours.retrieve",
+        "operationId": "current.businessHours.retrieve",
         "parameters": [],
         "responses": {
           "200": {
@@ -3952,7 +3952,7 @@
           "shops"
         ],
         "summary": "Shops current business Hours update.",
-        "operationId": "shops.current.businessHours.update",
+        "operationId": "current.businessHours.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -3960,7 +3960,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -4097,7 +4097,7 @@
           "shops"
         ],
         "summary": "Shops current service Areas list.",
-        "operationId": "shops.current.serviceAreas.list",
+        "operationId": "current.serviceAreas.list",
         "parameters": [
           {
             "name": "area_type",
@@ -4239,7 +4239,7 @@
           "shops"
         ],
         "summary": "Shops current service Areas create.",
-        "operationId": "shops.current.serviceAreas.create",
+        "operationId": "current.serviceAreas.create",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -4247,7 +4247,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -4384,7 +4384,7 @@
           "shops"
         ],
         "summary": "Shops current service Areas update.",
-        "operationId": "shops.current.serviceAreas.update",
+        "operationId": "current.serviceAreas.update",
         "parameters": [
           {
             "name": "serviceAreaId",
@@ -4400,7 +4400,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -4537,7 +4537,7 @@
           "shops"
         ],
         "summary": "Shops current policies list.",
-        "operationId": "shops.current.policies.list",
+        "operationId": "current.policies.list",
         "parameters": [
           {
             "name": "policy_type",
@@ -4673,7 +4673,7 @@
           "shops"
         ],
         "summary": "Shops current policies update.",
-        "operationId": "shops.current.policies.update",
+        "operationId": "current.policies.update",
         "parameters": [
           {
             "name": "policyId",
@@ -4689,7 +4689,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -4826,7 +4826,7 @@
           "shops"
         ],
         "summary": "Shops current deposit Account retrieve.",
-        "operationId": "shops.current.depositAccount.retrieve",
+        "operationId": "current.depositAccount.retrieve",
         "parameters": [],
         "responses": {
           "200": {
@@ -4947,7 +4947,7 @@
           "shops"
         ],
         "summary": "Shops current risk Signals list.",
-        "operationId": "shops.current.riskSignals.list",
+        "operationId": "current.riskSignals.list",
         "parameters": [
           {
             "name": "signal_type",
@@ -5091,7 +5091,7 @@
           "shops"
         ],
         "summary": "Shops current products list.",
-        "operationId": "shops.current.products.list",
+        "operationId": "current.products.list",
         "x-sdkwork-permission": "commerce.shops.read",
         "parameters": [
           {
@@ -5225,7 +5225,7 @@
           "shops"
         ],
         "summary": "Shops current products create.",
-        "operationId": "shops.current.products.create",
+        "operationId": "current.products.create",
         "x-sdkwork-permission": "commerce.shops.manage",
         "parameters": [],
         "responses": {
@@ -5333,7 +5333,7 @@
           "shops"
         ],
         "summary": "Shops current products update.",
-        "operationId": "shops.current.products.update",
+        "operationId": "current.products.update",
         "x-sdkwork-permission": "commerce.shops.manage",
         "parameters": [
           {
@@ -5450,7 +5450,7 @@
           "shops"
         ],
         "summary": "Shops current products publish.",
-        "operationId": "shops.current.products.publish",
+        "operationId": "current.products.publish",
         "x-sdkwork-permission": "commerce.shops.manage",
         "parameters": [
           {
@@ -5567,7 +5567,7 @@
           "shops"
         ],
         "summary": "Shops current products unpublish.",
-        "operationId": "shops.current.products.unpublish",
+        "operationId": "current.products.unpublish",
         "x-sdkwork-permission": "commerce.shops.manage",
         "parameters": [
           {
@@ -5684,7 +5684,7 @@
           "shops"
         ],
         "summary": "Shops current orders list.",
-        "operationId": "shops.current.orders.list",
+        "operationId": "current.orders.list",
         "x-sdkwork-permission": "commerce.shops.read",
         "parameters": [
           {
@@ -5812,7 +5812,7 @@
           "shops"
         ],
         "summary": "Shops current orders retrieve.",
-        "operationId": "shops.current.orders.retrieve",
+        "operationId": "current.orders.retrieve",
         "x-sdkwork-permission": "commerce.shops.read",
         "parameters": [
           {
@@ -5919,7 +5919,7 @@
           "shops"
         ],
         "summary": "Shops current orders fulfillments create.",
-        "operationId": "shops.current.orders.fulfillments.create",
+        "operationId": "current.orders.fulfillments.create",
         "x-sdkwork-permission": "commerce.shops.manage",
         "parameters": [
           {
@@ -6036,7 +6036,7 @@
           "shops"
         ],
         "summary": "Shops current settlements list.",
-        "operationId": "shops.current.settlements.list",
+        "operationId": "current.settlements.list",
         "x-sdkwork-permission": "commerce.shops.read",
         "parameters": [
           {

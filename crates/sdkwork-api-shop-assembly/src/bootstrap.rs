@@ -5,10 +5,10 @@
 //! so `/healthz`, `/livez`, `/readyz`, and `/metrics` are not duplicated per surface.
 
 use axum::Router;
-use sdkwork_shop_service_host::ShopServiceHost;
+use std::sync::Arc;
 use sdkwork_web_bootstrap::{ApiAssemblyContribution, ReadinessCheck};
 use sdkwork_web_core::{DomainContextInjector, HttpRouteManifest};
-use std::sync::Arc;
+use sdkwork_shop_service_host::ShopServiceHost;
 
 pub type ApiAssembly = ApiAssemblyContribution;
 
@@ -19,18 +19,10 @@ pub struct ApiAssemblyContext {
 }
 
 pub async fn assemble_api_router(context: ApiAssemblyContext) -> Result<ApiAssembly, String> {
-    let ApiAssemblyContext {
-        host,
-        domain_context_injectors,
-        readiness_check,
-    } = context;
+    let ApiAssemblyContext { host, domain_context_injectors, readiness_check } = context;
     let mut router = Router::new();
-    router = router.merge(sdkwork_routes_shop_app_api::gateway_mount_business(
-        host.clone(),
-    ));
-    router = router.merge(sdkwork_routes_shop_backend_api::gateway_mount_business(
-        host.clone(),
-    ));
+    router = router.merge(sdkwork_routes_shop_app_api::gateway_mount_business(host.clone()));
+    router = router.merge(sdkwork_routes_shop_backend_api::gateway_mount_business(host.clone()));
     let mut routes = Vec::new();
     routes.extend_from_slice(sdkwork_routes_shop_app_api::gateway_route_manifest().routes());
     routes.extend_from_slice(sdkwork_routes_shop_backend_api::gateway_route_manifest().routes());
@@ -44,18 +36,10 @@ pub async fn assemble_api_router(context: ApiAssemblyContext) -> Result<ApiAssem
     )
 }
 
-pub async fn assemble_app_api_contribution(
-    context: ApiAssemblyContext,
-) -> Result<ApiAssembly, String> {
-    let ApiAssemblyContext {
-        host,
-        domain_context_injectors,
-        readiness_check,
-    } = context;
+pub async fn assemble_app_api_contribution(context: ApiAssemblyContext) -> Result<ApiAssembly, String> {
+    let ApiAssemblyContext { host, domain_context_injectors, readiness_check } = context;
     let mut router = Router::new();
-    router = router.merge(sdkwork_routes_shop_app_api::gateway_mount_business(
-        host.clone(),
-    ));
+    router = router.merge(sdkwork_routes_shop_app_api::gateway_mount_business(host.clone()));
     let mut routes = Vec::new();
     routes.extend_from_slice(sdkwork_routes_shop_app_api::gateway_route_manifest().routes());
     ApiAssemblyContribution::from_manifest(
@@ -68,18 +52,10 @@ pub async fn assemble_app_api_contribution(
     )
 }
 
-pub async fn assemble_backend_api_contribution(
-    context: ApiAssemblyContext,
-) -> Result<ApiAssembly, String> {
-    let ApiAssemblyContext {
-        host,
-        domain_context_injectors,
-        readiness_check,
-    } = context;
+pub async fn assemble_backend_api_contribution(context: ApiAssemblyContext) -> Result<ApiAssembly, String> {
+    let ApiAssemblyContext { host, domain_context_injectors, readiness_check } = context;
     let mut router = Router::new();
-    router = router.merge(sdkwork_routes_shop_backend_api::gateway_mount_business(
-        host.clone(),
-    ));
+    router = router.merge(sdkwork_routes_shop_backend_api::gateway_mount_business(host.clone()));
     let mut routes = Vec::new();
     routes.extend_from_slice(sdkwork_routes_shop_backend_api::gateway_route_manifest().routes());
     ApiAssemblyContribution::from_manifest(
@@ -91,3 +67,4 @@ pub async fn assemble_backend_api_contribution(
         readiness_check,
     )
 }
+
