@@ -1,5 +1,5 @@
 use sdkwork_api_shop_assembly::assemble_api_router_from_env;
-use sdkwork_web_bootstrap::{infra_public_path_prefixes, ComposedApiAssembly};
+use sdkwork_web_bootstrap::{infra_public_path_prefixes, ApiModuleRegistry, ComposedApiAssembly};
 
 #[tokio::main]
 async fn main() {
@@ -14,7 +14,10 @@ async fn main() {
         assembly.route_manifest.clone(),
         infra_public_path_prefixes(),
     );
-    let app = ComposedApiAssembly::try_compose("SDKWork Shop API", vec![assembly])
+    let mut module_registry = ApiModuleRegistry::new();
+    module_registry.add_modules(vec![assembly]);
+    let app = module_registry
+        .try_compose("SDKWork Shop API")
         .expect("compose shop API authority")
         .into_hosted(framework)
         .router

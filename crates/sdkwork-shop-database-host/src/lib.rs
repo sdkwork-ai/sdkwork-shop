@@ -38,8 +38,7 @@ pub fn database_module() -> Result<DefaultDatabaseModule, SpiError> {
 
 pub async fn bootstrap_shop_database(pool: DatabasePool) -> Result<ShopDatabaseHost, String> {
     let module = Arc::new(
-        database_module()
-            .map_err(|error| format!("load shop database module failed: {error}"))?,
+        database_module().map_err(|error| format!("load shop database module failed: {error}"))?,
     );
     let manifest = DatabaseManifest::from_file(module.manifest_path())
         .map_err(|error| format!("read shop database manifest failed: {error}"))?;

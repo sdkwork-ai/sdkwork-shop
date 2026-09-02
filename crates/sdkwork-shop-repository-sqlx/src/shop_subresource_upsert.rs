@@ -7,7 +7,6 @@ pub enum ShopWriteDb {
 }
 
 impl ShopWriteDb {
-
     pub fn postgres(pool: PgPool) -> Self {
         Self::Postgres(pool)
     }
@@ -1457,8 +1456,6 @@ pub fn map_row_json_pg(row: &PgRow) -> serde_json::Value {
     }
     serde_json::Value::Object(object)
 }
-
-
 
 pub fn pg_optional_string(row: &PgRow, column: &str) -> Option<String> {
     row.try_get::<Option<String>, _>(column).ok().flatten()

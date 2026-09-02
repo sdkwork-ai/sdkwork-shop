@@ -15,8 +15,8 @@ use crate::subject::app_runtime_subject_from_extension;
 use crate::web_bootstrap::with_backend_request_identity;
 
 use sdkwork_shop_repository_sqlx::shop_subresource_upsert::{
-    self, current_timestamp_string, map_row_json_pg, pg_optional_string,
-    pg_string, stable_storage_id, ShopWriteDb,
+    self, current_timestamp_string, map_row_json_pg, pg_optional_string, pg_string,
+    stable_storage_id, ShopWriteDb,
 };
 
 fn as_shop_write_db(db: &BackendShopDb) -> ShopWriteDb {
@@ -943,7 +943,6 @@ async fn list_shop_table_rows_db(
         }
     }
 }
-
 
 fn map_shop_pg(row: &PgRow) -> ShopSummary {
     ShopSummary {
