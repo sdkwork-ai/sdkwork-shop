@@ -132,9 +132,7 @@ impl PostgresCommerceShopStore {
         &self,
         scope: &ShopScopeQuery,
     ) -> Result<String, CommerceServiceError> {
-        let organization_id = scope.organization_id.as_deref().ok_or_else(|| {
-            CommerceServiceError::validation("organization_id is required for current shop scope")
-        })?;
+        let organization_id = scope.organization_id.as_deref().unwrap_or("0");
         let base_sql = r#"
             SELECT id
             FROM commerce_shop

@@ -1279,10 +1279,9 @@ async fn create_current_product(
         Ok(v) => v,
         Err(m) => return unauthorized_response(m),
     };
-    let organization_id = match subject.organization_id {
-        Some(v) => v,
-        None => return validation_response("organization_id is required"),
-    };
+    let organization_id = subject
+        .organization_id
+        .unwrap_or_else(|| "0".to_string());
     let command = CreateProductSpuCommand {
         tenant_id: subject.tenant_id,
         organization_id,

@@ -247,7 +247,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops"
       }
@@ -377,7 +376,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/{shopId}"
       }
@@ -498,7 +496,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current"
       }
@@ -619,7 +616,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/dashboard"
       }
@@ -740,7 +736,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/readiness"
       }
@@ -892,7 +887,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/category_bindings"
       },
@@ -1023,7 +1017,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.categoryBinding.upserted",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -1171,7 +1164,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/brand_authorizations"
       },
@@ -1302,7 +1294,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.brandAuthorization.upserted",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -1466,7 +1457,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/qualifications"
       },
@@ -1597,7 +1587,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.qualification.upserted",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -1753,7 +1742,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/customer_services"
       },
@@ -1884,7 +1872,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.customerService.upserted",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -2040,7 +2027,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/return_addresses"
       },
@@ -2171,7 +2157,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.returnAddress.upserted",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -2327,7 +2312,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/shipping_templates"
       },
@@ -2458,7 +2442,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.shippingTemplate.upserted",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -2598,7 +2581,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/applications"
       },
@@ -2729,7 +2711,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.application.submitted",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -2877,7 +2858,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/verifications"
       }
@@ -3005,7 +2985,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/status_events"
       }
@@ -3141,7 +3120,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/channels"
       }
@@ -3282,7 +3260,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.channel.updated",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -3415,7 +3392,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/fulfillment_profile"
       },
@@ -3546,7 +3522,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.fulfillmentProfile.updated",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -3679,7 +3654,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/settlement_profile"
       },
@@ -3810,7 +3784,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.settlementProfile.updated",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -3943,7 +3916,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/business_hours"
       },
@@ -4074,7 +4046,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.businessHours.updated",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -4230,7 +4201,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/service_areas"
       },
@@ -4361,7 +4331,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.serviceArea.created",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -4514,7 +4483,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.serviceArea.updated",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -4662,7 +4630,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/policies"
       }
@@ -4803,7 +4770,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.policy.updated",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -4936,7 +4902,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/deposit_account"
       }
@@ -5080,7 +5045,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/risk_signals"
       }
@@ -5092,7 +5056,6 @@
         ],
         "summary": "Shops current products list.",
         "operationId": "current.products.list",
-        "x-sdkwork-permission": "commerce.shops.read",
         "parameters": [
           {
             "name": "q",
@@ -5226,7 +5189,6 @@
         ],
         "summary": "Shops current products create.",
         "operationId": "current.products.create",
-        "x-sdkwork-permission": "commerce.shops.manage",
         "parameters": [],
         "responses": {
           "201": {
@@ -5334,7 +5296,6 @@
         ],
         "summary": "Shops current products update.",
         "operationId": "current.products.update",
-        "x-sdkwork-permission": "commerce.shops.manage",
         "parameters": [
           {
             "name": "productId",
@@ -5451,7 +5412,6 @@
         ],
         "summary": "Shops current products publish.",
         "operationId": "current.products.publish",
-        "x-sdkwork-permission": "commerce.shops.manage",
         "parameters": [
           {
             "name": "productId",
@@ -5568,7 +5528,6 @@
         ],
         "summary": "Shops current products unpublish.",
         "operationId": "current.products.unpublish",
-        "x-sdkwork-permission": "commerce.shops.manage",
         "parameters": [
           {
             "name": "productId",
@@ -5685,7 +5644,6 @@
         ],
         "summary": "Shops current orders list.",
         "operationId": "current.orders.list",
-        "x-sdkwork-permission": "commerce.shops.read",
         "parameters": [
           {
             "name": "status",
@@ -5813,7 +5771,6 @@
         ],
         "summary": "Shops current orders retrieve.",
         "operationId": "current.orders.retrieve",
-        "x-sdkwork-permission": "commerce.shops.read",
         "parameters": [
           {
             "name": "orderId",
@@ -5920,7 +5877,6 @@
         ],
         "summary": "Shops current orders fulfillments create.",
         "operationId": "current.orders.fulfillments.create",
-        "x-sdkwork-permission": "commerce.shops.manage",
         "parameters": [
           {
             "name": "orderId",
@@ -6037,7 +5993,6 @@
         ],
         "summary": "Shops current settlements list.",
         "operationId": "current.settlements.list",
-        "x-sdkwork-permission": "commerce.shops.read",
         "parameters": [
           {
             "name": "status",
