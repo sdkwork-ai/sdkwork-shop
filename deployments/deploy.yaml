@@ -28,6 +28,10 @@ profiles:
         tls: dtupay.com
         mode: web+api
         web: adaptive
+      - domain: shop-dev.noaper.com
+        tls: noaper.com
+        mode: web+api
+        web: adaptive
       - domain: shop-dev.sdkwork.cn
         tls: sdkwork.cn
         mode: web+api
@@ -38,6 +42,10 @@ profiles:
         web: adaptive
       - domain: shop-dev.dtupay.cn
         tls: dtupay.cn
+        mode: web+api
+        web: adaptive
+      - domain: shop-dev.noaper.cn
+        tls: noaper.cn
         mode: web+api
         web: adaptive
       - domain: shop-dev.skubc.com
@@ -105,6 +113,10 @@ profiles:
         tls: dtupay.com
         mode: web+api
         web: adaptive
+      - domain: shop.noaper.com
+        tls: noaper.com
+        mode: web+api
+        web: adaptive
       - domain: shop.sdkwork.cn
         tls: sdkwork.cn
         mode: web+api
@@ -115,6 +127,10 @@ profiles:
         web: adaptive
       - domain: shop.dtupay.cn
         tls: dtupay.cn
+        mode: web+api
+        web: adaptive
+      - domain: shop.noaper.cn
+        tls: noaper.cn
         mode: web+api
         web: adaptive
       - domain: shop.skubc.com
@@ -182,6 +198,10 @@ profiles:
         tls: dtupay.com
         mode: web+api
         web: adaptive
+      - domain: shop-dev.noaper.com
+        tls: noaper.com
+        mode: web+api
+        web: adaptive
       - domain: shop-dev.sdkwork.cn
         tls: sdkwork.cn
         mode: web+api
@@ -192,6 +212,10 @@ profiles:
         web: adaptive
       - domain: shop-dev.dtupay.cn
         tls: dtupay.cn
+        mode: web+api
+        web: adaptive
+      - domain: shop-dev.noaper.cn
+        tls: noaper.cn
         mode: web+api
         web: adaptive
       - domain: shop-dev.skubc.com
@@ -259,6 +283,10 @@ profiles:
         tls: dtupay.com
         mode: web+api
         web: adaptive
+      - domain: shop.noaper.com
+        tls: noaper.com
+        mode: web+api
+        web: adaptive
       - domain: shop.sdkwork.cn
         tls: sdkwork.cn
         mode: web+api
@@ -269,6 +297,10 @@ profiles:
         web: adaptive
       - domain: shop.dtupay.cn
         tls: dtupay.cn
+        mode: web+api
+        web: adaptive
+      - domain: shop.noaper.cn
+        tls: noaper.cn
         mode: web+api
         web: adaptive
       - domain: shop.skubc.com
