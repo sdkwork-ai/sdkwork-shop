@@ -18,3 +18,7 @@ sdkwork_shop_service.workspace = true
 sdkwork_shop_database_host.workspace = true
 sdkwork-database-sqlx.workspace = true
 sdkwork-database-spi.workspace = true
+sdkwork-database-id.workspace = true
+sdkwork-web-bootstrap.workspace = true
+sdkwork-web-core.workspace = true
+tracing.workspace = true

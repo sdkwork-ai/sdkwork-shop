@@ -10,7 +10,9 @@ pub fn build_shop_app_router(host: Arc<ShopServiceHost>) -> Router {
         .database_pool()
         .as_postgres()
         .expect("shop app-api requires an authoritative PostgreSQL pool");
-    app_shop_router_with_postgres_pool(pool.clone())
+    // The catalog store mints merchandise ids, so it takes the process Snowflake identity rather
+    // than opening a second, divergent generator.
+    app_shop_router_with_postgres_pool(pool.clone(), host.id_generator())
 }
 
 pub async fn build_shop_app_router_with_framework(host: Arc<ShopServiceHost>) -> Router {

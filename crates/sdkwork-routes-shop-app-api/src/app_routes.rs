@@ -3,15 +3,17 @@ use std::pin::Pin;
 use std::sync::Arc;
 
 use axum::extract::{Extension, Path, Query, State};
+use axum::http::HeaderMap;
 use axum::response::Response;
 use axum::routing::{get, patch, post};
 use axum::{Json, Router};
 use sdkwork_contract_service::CommerceServiceError;
+use sdkwork_database_id::IdGenerator;
 use sdkwork_iam_context_service::IamAppContext;
 use sdkwork_merchandise_repository_sqlx::PostgresCommerceCatalogStore;
 use sdkwork_merchandise_service::{
-    ArchiveSpuCommand, CreateProductSpuCommand, ProductSpuListQuery, PublishSpuCommand,
-    UpdateProductSpuCommand,
+    ArchiveSpuCommand, CatalogRepositoryPort, CreateProductSpuCommand, GuardedWrite,
+    ProductSpuListQuery, ProductType, PublishSpuCommand, UpdateProductSpuCommand,
 };
 use sdkwork_shop_repository_sqlx::PostgresCommerceShopStore;
 use sdkwork_shop_service::{
@@ -26,7 +28,8 @@ use crate::http_envelope::{
 };
 use crate::subject::app_runtime_subject_from_extension;
 use sdkwork_merchandise_web_support::{
-    map_spu, CommerceCatalogStore, CreateSpuBody, UpdateSpuBody,
+    expected_version_from_if_match, map_product, stale_version_response, success_resource_with_etag,
+    CreateSpuBody, UpdateSpuBody,
 };
 
 pub type CommerceShopFuture<'a, T> =
@@ -476,7 +479,7 @@ impl_shop_store_forward!(PostgresCommerceShopStore);
 #[derive(Clone)]
 struct AppShopState {
     shop: Arc<dyn CommerceShopStore>,
-    catalog: Arc<dyn CommerceCatalogStore>,
+    catalog: Arc<dyn CatalogRepositoryPort>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -513,16 +516,16 @@ struct ShopSummaryResponse {
     updated_at: String,
 }
 
-pub fn app_shop_router_with_postgres_pool(pool: PgPool) -> Router {
+pub fn app_shop_router_with_postgres_pool(pool: PgPool, ids: Arc<dyn IdGenerator>) -> Router {
     build_app_shop_router(
         Arc::new(PostgresCommerceShopStore::new(pool.clone())),
-        Arc::new(PostgresCommerceCatalogStore::new(pool)),
+        Arc::new(PostgresCommerceCatalogStore::new(pool, ids)),
     )
 }
 
 pub fn build_app_shop_router(
     shop: Arc<dyn CommerceShopStore>,
-    catalog: Arc<dyn CommerceCatalogStore>,
+    catalog: Arc<dyn CatalogRepositoryPort>,
 ) -> Router {
     Router::new()
         .route("/app/v3/api/shops", get(list_shops))
@@ -1260,12 +1263,13 @@ async fn list_current_products(
         None,
         None,
         None,
+        None,
     ) {
         Ok(v) => v,
         Err(e) => return validation_response(e.message()),
     };
     match state.catalog.list_spus(query).await {
-        Ok(items) => success_paged_list(items.into_iter().map(map_spu).collect(), 1, 20, 0),
+        Ok(items) => success_paged_list(items.into_iter().map(map_product).collect(), 1, 20, 0),
         Err(error) => shop_system_response("shop products are unavailable", error),
     }
 }
@@ -1279,30 +1283,37 @@ async fn create_current_product(
         Ok(v) => v,
         Err(m) => return unauthorized_response(m),
     };
-    let organization_id = subject
-        .organization_id
-        .unwrap_or_else(|| "0".to_string());
+    // A SPU outside every organization cannot be merchandised, so an absent organization is a
+    // malformed request rather than a product with no owner.
+    let organization_id = match subject.organization_id.as_deref() {
+        Some(id) => id.to_owned(),
+        None => return validation_response("organization_id is required"),
+    };
+    let product_type = match ProductType::from_storage_str(&body.product_type) {
+        Ok(value) => value,
+        Err(error) => return validation_response(error.message()),
+    };
     let command = CreateProductSpuCommand {
         tenant_id: subject.tenant_id,
         organization_id,
-        spu_no: body.spu_no,
+        spu_no: body.product_no,
         title: body.title,
         subtitle: body.subtitle,
         description: body.description,
-        product_type: body.product_type,
+        product_type,
         category_id: body.category_id,
-        visible_surfaces: body.visible_surfaces.unwrap_or_else(|| "all".into()),
     };
     if let Err(error) = command.validate() {
         return validation_response(error.message());
     }
     match state.catalog.create_spu(command).await {
-        Ok(spu) => success_created_resource(map_spu(spu)),
+        Ok(spu) => success_created_resource(map_product(spu)),
         Err(error) => shop_system_response("shop product create is unavailable", error),
     }
 }
 
 async fn update_current_product(
+    headers: HeaderMap,
     State(state): State<AppShopState>,
     runtime_context: Option<Extension<IamAppContext>>,
     Path(product_id): Path<String>,
@@ -1312,6 +1323,12 @@ async fn update_current_product(
         Ok(v) => v,
         Err(m) => return unauthorized_response(m),
     };
+    // Read before the body is used for anything, so a request that did not say which version it is
+    // editing is refused with `428` rather than being allowed to reach a write.
+    let expected_version = match expected_version_from_if_match(&headers) {
+        Ok(version) => version,
+        Err(response) => return *response,
+    };
     let command = UpdateProductSpuCommand {
         tenant_id: subject.tenant_id,
         spu_id: product_id,
@@ -1319,15 +1336,24 @@ async fn update_current_product(
         subtitle: body.subtitle,
         description: body.description,
         category_id: body.category_id,
-        visible_surfaces: body.visible_surfaces,
+        expected_version,
     };
+    if let Err(error) = command.validate() {
+        return validation_response(error.message());
+    }
     match state.catalog.update_spu(command).await {
-        Ok(spu) => success_resource(map_spu(spu)),
+        Ok(GuardedWrite::Applied(spu)) => {
+            // The row's version *after* the write, which is what the next `If-Match` must name.
+            let version = spu.version;
+            success_resource_with_etag(map_product(spu), version)
+        }
+        Ok(GuardedWrite::StaleVersion(stale)) => stale_version_response("product", stale),
         Err(error) => shop_system_response("shop product update is unavailable", error),
     }
 }
 
 async fn publish_current_product(
+    headers: HeaderMap,
     State(state): State<AppShopState>,
     runtime_context: Option<Extension<IamAppContext>>,
     Path(product_id): Path<String>,
@@ -1336,20 +1362,30 @@ async fn publish_current_product(
         Ok(v) => v,
         Err(m) => return unauthorized_response(m),
     };
+    let expected_version = match expected_version_from_if_match(&headers) {
+        Ok(version) => version,
+        Err(response) => return *response,
+    };
     let command = PublishSpuCommand {
         tenant_id: subject.tenant_id,
         spu_id: product_id,
+        expected_version,
     };
     if let Err(error) = command.validate() {
         return validation_response(error.message());
     }
     match state.catalog.publish_spu(command).await {
-        Ok(spu) => success_resource(map_spu(spu)),
+        Ok(GuardedWrite::Applied(spu)) => {
+            let version = spu.version;
+            success_resource_with_etag(map_product(spu), version)
+        }
+        Ok(GuardedWrite::StaleVersion(stale)) => stale_version_response("product", stale),
         Err(error) => shop_system_response("shop product publish is unavailable", error),
     }
 }
 
 async fn unpublish_current_product(
+    headers: HeaderMap,
     State(state): State<AppShopState>,
     runtime_context: Option<Extension<IamAppContext>>,
     Path(product_id): Path<String>,
@@ -1358,15 +1394,24 @@ async fn unpublish_current_product(
         Ok(v) => v,
         Err(m) => return unauthorized_response(m),
     };
+    let expected_version = match expected_version_from_if_match(&headers) {
+        Ok(version) => version,
+        Err(response) => return *response,
+    };
     let command = ArchiveSpuCommand {
         tenant_id: subject.tenant_id,
         spu_id: product_id,
+        expected_version,
     };
     if let Err(error) = command.validate() {
         return validation_response(error.message());
     }
     match state.catalog.archive_spu(command).await {
-        Ok(spu) => success_resource(map_spu(spu)),
+        Ok(GuardedWrite::Applied(spu)) => {
+            let version = spu.version;
+            success_resource_with_etag(map_product(spu), version)
+        }
+        Ok(GuardedWrite::StaleVersion(stale)) => stale_version_response("product", stale),
         Err(error) => shop_system_response("shop product unpublish is unavailable", error),
     }
 }
