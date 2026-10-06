@@ -1336,6 +1336,9 @@ async fn update_current_product(
         subtitle: body.subtitle,
         description: body.description,
         category_id: body.category_id,
+        // The app-api edit body does not carry the lifecycle status yet, so the
+        // edit leaves the stored status alone (merchandise command semantics).
+        status: None,
         expected_version,
     };
     if let Err(error) = command.validate() {
