@@ -80,7 +80,7 @@ Read \`../sdkwork-specs/SOUL.md\` before executing tasks in this root.
 
 ## Application Identity
 
-Application manifests live under \`apps/*/sdkwork.app.config.json\`. This repository root is the commerce shop capability workspace (\`domain: commerce\`, \`capability: shop\`).
+Application manifests live under \`apps/*/agent.app.config.json\`. This repository root is the commerce shop capability workspace (\`domain: commerce\`, \`capability: shop\`).
 
 ## Project Rules
 
