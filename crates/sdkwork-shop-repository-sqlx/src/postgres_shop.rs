@@ -328,7 +328,7 @@ impl PostgresCommerceShopStore {
                 (id, tenant_id, organization_id, fulfillment_no, order_id, shop_id,
                  fulfillment_type, status, request_no, idempotency_key, created_at, updated_at)
             VALUES
-                ($1, $2, $3, $4, $5, $6, $7, 'pending', $8, $9, $10, $11)
+                ($1, $2, $3, $4, $5, $6, $7, 'pending', $8, $9, CAST($10 AS TIMESTAMPTZ), CAST($11 AS TIMESTAMPTZ))
            "#,
         )
         .bind(fulfillment_id)
@@ -819,7 +819,7 @@ fn snake_to_camel(name: &str) -> String {
 }
 
 fn chrono_like_now() -> String {
-    "2026-06-17 00:00:00".to_owned()
+    chrono::Utc::now().to_rfc3339_opts(chrono::SecondsFormat::Millis, true)
 }
 
 fn store_error(message: &str, error: impl std::fmt::Display) -> CommerceServiceError {
