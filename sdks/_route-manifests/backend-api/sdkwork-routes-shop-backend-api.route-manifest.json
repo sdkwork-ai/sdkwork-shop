@@ -17,7 +17,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops",
-      "operationId": "shops.management.list",
+      "operationId": "management.list",
       "tags": [
         "shops"
       ],
@@ -39,7 +39,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/shops",
-      "operationId": "shops.create",
+      "operationId": "create",
       "tags": [
         "shops"
       ],
@@ -61,7 +61,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}",
-      "operationId": "shops.management.retrieve",
+      "operationId": "management.retrieve",
       "tags": [
         "shops"
       ],
@@ -83,7 +83,7 @@
     {
       "method": "PATCH",
       "path": "/backend/v3/api/shops/{shopId}",
-      "operationId": "shops.update",
+      "operationId": "update",
       "tags": [
         "shops"
       ],
@@ -105,7 +105,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/category_bindings",
-      "operationId": "shops.categoryBindings.list",
+      "operationId": "categoryBindings.list",
       "tags": [
         "shops"
       ],
@@ -127,7 +127,7 @@
     {
       "method": "PUT",
       "path": "/backend/v3/api/shops/{shopId}/category_bindings",
-      "operationId": "shops.categoryBindings.update",
+      "operationId": "categoryBindings.update",
       "tags": [
         "shops"
       ],
@@ -149,7 +149,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/brand_authorizations",
-      "operationId": "shops.brandAuthorizations.list",
+      "operationId": "brandAuthorizations.list",
       "tags": [
         "shops"
       ],
@@ -171,7 +171,7 @@
     {
       "method": "PUT",
       "path": "/backend/v3/api/shops/{shopId}/brand_authorizations",
-      "operationId": "shops.brandAuthorizations.update",
+      "operationId": "brandAuthorizations.update",
       "tags": [
         "shops"
       ],
@@ -193,7 +193,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/qualifications",
-      "operationId": "shops.qualifications.list",
+      "operationId": "qualifications.list",
       "tags": [
         "shops"
       ],
@@ -215,7 +215,7 @@
     {
       "method": "PUT",
       "path": "/backend/v3/api/shops/{shopId}/qualifications",
-      "operationId": "shops.qualifications.update",
+      "operationId": "qualifications.update",
       "tags": [
         "shops"
       ],
@@ -237,7 +237,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/customer_services",
-      "operationId": "shops.customerServices.list",
+      "operationId": "customerServices.list",
       "tags": [
         "shops"
       ],
@@ -259,7 +259,7 @@
     {
       "method": "PUT",
       "path": "/backend/v3/api/shops/{shopId}/customer_services",
-      "operationId": "shops.customerServices.update",
+      "operationId": "customerServices.update",
       "tags": [
         "shops"
       ],
@@ -281,7 +281,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/return_addresses",
-      "operationId": "shops.returnAddresses.list",
+      "operationId": "returnAddresses.list",
       "tags": [
         "shops"
       ],
@@ -303,7 +303,7 @@
     {
       "method": "PUT",
       "path": "/backend/v3/api/shops/{shopId}/return_addresses",
-      "operationId": "shops.returnAddresses.update",
+      "operationId": "returnAddresses.update",
       "tags": [
         "shops"
       ],
@@ -325,7 +325,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/shipping_templates",
-      "operationId": "shops.shippingTemplates.list",
+      "operationId": "shippingTemplates.list",
       "tags": [
         "shops"
       ],
@@ -347,7 +347,7 @@
     {
       "method": "PUT",
       "path": "/backend/v3/api/shops/{shopId}/shipping_templates",
-      "operationId": "shops.shippingTemplates.update",
+      "operationId": "shippingTemplates.update",
       "tags": [
         "shops"
       ],
@@ -369,7 +369,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/verifications",
-      "operationId": "shops.verifications.list",
+      "operationId": "verifications.list",
       "tags": [
         "shops"
       ],
@@ -391,7 +391,7 @@
     {
       "method": "PATCH",
       "path": "/backend/v3/api/shops/{shopId}/verifications/{verificationId}",
-      "operationId": "shops.verifications.update",
+      "operationId": "verifications.update",
       "tags": [
         "shops"
       ],
@@ -413,7 +413,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/status_events",
-      "operationId": "shops.statusEvents.list",
+      "operationId": "statusEvents.list",
       "tags": [
         "shops"
       ],
@@ -435,7 +435,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/channels",
-      "operationId": "shops.channels.list",
+      "operationId": "channels.list",
       "tags": [
         "shops"
       ],
@@ -457,7 +457,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/shops/{shopId}/channels",
-      "operationId": "shops.channels.create",
+      "operationId": "channels.create",
       "tags": [
         "shops"
       ],
@@ -479,7 +479,7 @@
     {
       "method": "PATCH",
       "path": "/backend/v3/api/shops/{shopId}/channels/{channelId}",
-      "operationId": "shops.channels.update",
+      "operationId": "channels.update",
       "tags": [
         "shops"
       ],
@@ -501,7 +501,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/fulfillment_profile",
-      "operationId": "shops.fulfillmentProfile.retrieve",
+      "operationId": "fulfillmentProfile.retrieve",
       "tags": [
         "shops"
       ],
@@ -523,7 +523,7 @@
     {
       "method": "PATCH",
       "path": "/backend/v3/api/shops/{shopId}/fulfillment_profile",
-      "operationId": "shops.fulfillmentProfile.update",
+      "operationId": "fulfillmentProfile.update",
       "tags": [
         "shops"
       ],
@@ -545,7 +545,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/settlement_profile",
-      "operationId": "shops.settlementProfile.retrieve",
+      "operationId": "settlementProfile.retrieve",
       "tags": [
         "shops"
       ],
@@ -567,7 +567,7 @@
     {
       "method": "PATCH",
       "path": "/backend/v3/api/shops/{shopId}/settlement_profile",
-      "operationId": "shops.settlementProfile.update",
+      "operationId": "settlementProfile.update",
       "tags": [
         "shops"
       ],
@@ -589,7 +589,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/shops/{shopId}/settlement_profile/approve",
-      "operationId": "shops.settlementProfile.approve",
+      "operationId": "settlementProfile.approve",
       "tags": [
         "shops"
       ],
@@ -611,7 +611,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/shops/{shopId}/settlement_profile/reject",
-      "operationId": "shops.settlementProfile.reject",
+      "operationId": "settlementProfile.reject",
       "tags": [
         "shops"
       ],
@@ -633,7 +633,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/business_hours",
-      "operationId": "shops.businessHours.retrieve",
+      "operationId": "businessHours.retrieve",
       "tags": [
         "shops"
       ],
@@ -655,7 +655,7 @@
     {
       "method": "PATCH",
       "path": "/backend/v3/api/shops/{shopId}/business_hours",
-      "operationId": "shops.businessHours.update",
+      "operationId": "businessHours.update",
       "tags": [
         "shops"
       ],
@@ -677,7 +677,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/service_areas",
-      "operationId": "shops.serviceAreas.list",
+      "operationId": "serviceAreas.list",
       "tags": [
         "shops"
       ],
@@ -699,7 +699,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/shops/{shopId}/service_areas",
-      "operationId": "shops.serviceAreas.create",
+      "operationId": "serviceAreas.create",
       "tags": [
         "shops"
       ],
@@ -721,7 +721,7 @@
     {
       "method": "PATCH",
       "path": "/backend/v3/api/shops/{shopId}/service_areas/{serviceAreaId}",
-      "operationId": "shops.serviceAreas.update",
+      "operationId": "serviceAreas.update",
       "tags": [
         "shops"
       ],
@@ -743,7 +743,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/policies",
-      "operationId": "shops.policies.list",
+      "operationId": "policies.list",
       "tags": [
         "shops"
       ],
@@ -765,7 +765,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/shops/{shopId}/policies",
-      "operationId": "shops.policies.create",
+      "operationId": "policies.create",
       "tags": [
         "shops"
       ],
@@ -787,7 +787,7 @@
     {
       "method": "PATCH",
       "path": "/backend/v3/api/shops/{shopId}/policies/{policyId}",
-      "operationId": "shops.policies.update",
+      "operationId": "policies.update",
       "tags": [
         "shops"
       ],
@@ -809,7 +809,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/deposit_account",
-      "operationId": "shops.depositAccount.retrieve",
+      "operationId": "depositAccount.retrieve",
       "tags": [
         "shops"
       ],
@@ -831,7 +831,7 @@
     {
       "method": "PATCH",
       "path": "/backend/v3/api/shops/{shopId}/deposit_account",
-      "operationId": "shops.depositAccount.update",
+      "operationId": "depositAccount.update",
       "tags": [
         "shops"
       ],
@@ -853,7 +853,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/shops/{shopId}/deposit_account/review",
-      "operationId": "shops.depositAccount.review",
+      "operationId": "depositAccount.review",
       "tags": [
         "shops"
       ],
@@ -875,7 +875,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/risk_signals",
-      "operationId": "shops.riskSignals.list",
+      "operationId": "riskSignals.list",
       "tags": [
         "shops"
       ],
@@ -897,7 +897,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/shops/{shopId}/risk_signals",
-      "operationId": "shops.riskSignals.create",
+      "operationId": "riskSignals.create",
       "tags": [
         "shops"
       ],
@@ -919,7 +919,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/shops/{shopId}/risk_signals/{riskSignalId}/resolve",
-      "operationId": "shops.riskSignals.resolve",
+      "operationId": "riskSignals.resolve",
       "tags": [
         "shops"
       ],
@@ -941,7 +941,7 @@
     {
       "method": "GET",
       "path": "/backend/v3/api/shops/{shopId}/readiness",
-      "operationId": "shops.readiness.retrieve",
+      "operationId": "readiness.retrieve",
       "tags": [
         "shops"
       ],
@@ -963,7 +963,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/shops/{shopId}/submit_review",
-      "operationId": "shops.submitReview",
+      "operationId": "submitReview",
       "tags": [
         "shops"
       ],
@@ -985,7 +985,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/shops/{shopId}/approve",
-      "operationId": "shops.approve",
+      "operationId": "approve",
       "tags": [
         "shops"
       ],
@@ -1007,7 +1007,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/shops/{shopId}/reject",
-      "operationId": "shops.reject",
+      "operationId": "reject",
       "tags": [
         "shops"
       ],
@@ -1029,7 +1029,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/shops/{shopId}/suspend",
-      "operationId": "shops.suspend",
+      "operationId": "suspend",
       "tags": [
         "shops"
       ],
@@ -1051,7 +1051,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/shops/{shopId}/resume",
-      "operationId": "shops.resume",
+      "operationId": "resume",
       "tags": [
         "shops"
       ],
@@ -1073,7 +1073,7 @@
     {
       "method": "POST",
       "path": "/backend/v3/api/shops/{shopId}/close",
-      "operationId": "shops.close",
+      "operationId": "close",
       "tags": [
         "shops"
       ],

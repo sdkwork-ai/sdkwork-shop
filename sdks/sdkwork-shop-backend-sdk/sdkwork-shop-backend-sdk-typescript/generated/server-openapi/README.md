@@ -28,12 +28,11 @@ client.setAccessToken('your-access-token');
 
 // Use the SDK
 const params = {
-  parent_id: 'parent_id',
   status: 'status',
-  page: 3,
-  page_size: 4,
+  page: 2,
+  page_size: 3,
 };
-const result = await client.catalog.categories.management.list(params);
+const result = await client.catalog.attributes.management.list(params);
 ```
 
 ## Authentication
@@ -83,14 +82,13 @@ const result = await client.shops.management.list(params);
 ### catalog
 
 ```typescript
-// Catalog categories management list.
+// Catalog attributes management list.
 const params = {
-  parent_id: 'parent_id',
   status: 'status',
-  page: 3,
-  page_size: 4,
+  page: 2,
+  page_size: 3,
 };
-const result = await client.catalog.categories.management.list(params);
+const result = await client.catalog.attributes.management.list(params);
 ```
 
 ## Error Handling
@@ -100,12 +98,11 @@ import { SdkworkBackendClient, NetworkError, TimeoutError, AuthenticationError }
 
 try {
   const params = {
-    parent_id: 'parent_id',
     status: 'status',
-    page: 3,
-    page_size: 4,
+    page: 2,
+    page_size: 3,
   };
-  const result = await client.catalog.categories.management.list(params);
+  const result = await client.catalog.attributes.management.list(params);
 } catch (error) {
   if (error instanceof AuthenticationError) {
     console.error('Authentication failed:', error.message);
@@ -126,7 +123,7 @@ This SDK includes cross-platform publish scripts in `bin/`:
 - `bin/publish.sh`
 - `bin/publish.ps1`
 
-TypeScript check and publish commands use pnpm to materialize workspace dependency versions in a temporary tarball. They reject local-only dependency protocols before npm publication and do not rewrite the source `package.json`.
+TypeScript check and publish commands materialize workspace dependency versions in a temporary tarball with pnpm. They reject local-only dependency protocols before npm publication and do not rewrite the source `package.json`.
 
 ### Check
 

@@ -114,7 +114,7 @@
           "shops"
         ],
         "summary": "Shops list.",
-        "operationId": "shops.list",
+        "operationId": "list",
         "parameters": [
           {
             "name": "q",
@@ -247,9 +247,9 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops",
+        "x-sdkwork-permission": "commerce.shops.read"
       }
     },
     "/app/v3/api/shops/{shopId}": {
@@ -258,7 +258,7 @@
           "shops"
         ],
         "summary": "Shops retrieve.",
-        "operationId": "shops.retrieve",
+        "operationId": "retrieve",
         "parameters": [
           {
             "name": "shopId",
@@ -377,9 +377,9 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/{shopId}"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/{shopId}",
+        "x-sdkwork-permission": "commerce.shops.read"
       }
     },
     "/app/v3/api/shops/current": {
@@ -388,7 +388,7 @@
           "shops"
         ],
         "summary": "Shops current retrieve.",
-        "operationId": "shops.current.retrieve",
+        "operationId": "current.retrieve",
         "parameters": [],
         "responses": {
           "200": {
@@ -498,9 +498,9 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       }
     },
     "/app/v3/api/shops/current/dashboard": {
@@ -509,7 +509,7 @@
           "shops"
         ],
         "summary": "Shops current dashboard retrieve.",
-        "operationId": "shops.current.dashboard.retrieve",
+        "operationId": "current.dashboard.retrieve",
         "parameters": [],
         "responses": {
           "200": {
@@ -619,9 +619,9 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/dashboard"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/dashboard",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       }
     },
     "/app/v3/api/shops/current/readiness": {
@@ -630,7 +630,7 @@
           "shops"
         ],
         "summary": "Shops current readiness retrieve.",
-        "operationId": "shops.current.readiness.retrieve",
+        "operationId": "current.readiness.retrieve",
         "parameters": [],
         "responses": {
           "200": {
@@ -740,9 +740,9 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/readiness"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/readiness",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       }
     },
     "/app/v3/api/shops/current/category_bindings": {
@@ -751,7 +751,7 @@
           "shops"
         ],
         "summary": "Shops current category Bindings list.",
-        "operationId": "shops.current.categoryBindings.list",
+        "operationId": "current.categoryBindings.list",
         "parameters": [
           {
             "name": "shop_category_code",
@@ -892,16 +892,16 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/category_bindings"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/category_bindings",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       },
       "put": {
         "tags": [
           "shops"
         ],
         "summary": "Shops current category Bindings upsert.",
-        "operationId": "shops.current.categoryBindings.update",
+        "operationId": "current.categoryBindings.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -909,7 +909,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -1023,7 +1023,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.categoryBinding.upserted",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -1037,7 +1036,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/category_bindings"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/category_bindings",
+        "x-sdkwork-permission": "commerce.shops.self.write"
       }
     },
     "/app/v3/api/shops/current/brand_authorizations": {
@@ -1046,7 +1046,7 @@
           "shops"
         ],
         "summary": "Shops current brand Authorizations list.",
-        "operationId": "shops.current.brandAuthorizations.list",
+        "operationId": "current.brandAuthorizations.list",
         "parameters": [
           {
             "name": "brand_code",
@@ -1171,16 +1171,16 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/brand_authorizations"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/brand_authorizations",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       },
       "put": {
         "tags": [
           "shops"
         ],
         "summary": "Shops current brand Authorizations upsert.",
-        "operationId": "shops.current.brandAuthorizations.update",
+        "operationId": "current.brandAuthorizations.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -1188,7 +1188,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -1302,7 +1302,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.brandAuthorization.upserted",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -1316,7 +1315,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/brand_authorizations"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/brand_authorizations",
+        "x-sdkwork-permission": "commerce.shops.self.write"
       }
     },
     "/app/v3/api/shops/current/qualifications": {
@@ -1325,7 +1325,7 @@
           "shops"
         ],
         "summary": "Shops current qualifications list.",
-        "operationId": "shops.current.qualifications.list",
+        "operationId": "current.qualifications.list",
         "parameters": [
           {
             "name": "qualification_type",
@@ -1466,16 +1466,16 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/qualifications"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/qualifications",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       },
       "put": {
         "tags": [
           "shops"
         ],
         "summary": "Shops current qualifications upsert.",
-        "operationId": "shops.current.qualifications.update",
+        "operationId": "current.qualifications.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -1483,7 +1483,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -1597,7 +1597,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.qualification.upserted",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -1611,7 +1610,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/qualifications"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/qualifications",
+        "x-sdkwork-permission": "commerce.shops.self.write"
       }
     },
     "/app/v3/api/shops/current/customer_services": {
@@ -1620,7 +1620,7 @@
           "shops"
         ],
         "summary": "Shops current customer Services list.",
-        "operationId": "shops.current.customerServices.list",
+        "operationId": "current.customerServices.list",
         "parameters": [
           {
             "name": "service_channel",
@@ -1753,16 +1753,16 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/customer_services"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/customer_services",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       },
       "put": {
         "tags": [
           "shops"
         ],
         "summary": "Shops current customer Services upsert.",
-        "operationId": "shops.current.customerServices.update",
+        "operationId": "current.customerServices.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -1770,7 +1770,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -1884,7 +1884,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.customerService.upserted",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -1898,7 +1897,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/customer_services"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/customer_services",
+        "x-sdkwork-permission": "commerce.shops.self.write"
       }
     },
     "/app/v3/api/shops/current/return_addresses": {
@@ -1907,7 +1907,7 @@
           "shops"
         ],
         "summary": "Shops current return Addresses list.",
-        "operationId": "shops.current.returnAddresses.list",
+        "operationId": "current.returnAddresses.list",
         "parameters": [
           {
             "name": "address_usage",
@@ -2040,16 +2040,16 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/return_addresses"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/return_addresses",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       },
       "put": {
         "tags": [
           "shops"
         ],
         "summary": "Shops current return Addresses upsert.",
-        "operationId": "shops.current.returnAddresses.update",
+        "operationId": "current.returnAddresses.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -2057,7 +2057,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -2171,7 +2171,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.returnAddress.upserted",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -2185,7 +2184,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/return_addresses"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/return_addresses",
+        "x-sdkwork-permission": "commerce.shops.self.write"
       }
     },
     "/app/v3/api/shops/current/shipping_templates": {
@@ -2194,7 +2194,7 @@
           "shops"
         ],
         "summary": "Shops current shipping Templates list.",
-        "operationId": "shops.current.shippingTemplates.list",
+        "operationId": "current.shippingTemplates.list",
         "parameters": [
           {
             "name": "template_status",
@@ -2327,16 +2327,16 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/shipping_templates"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/shipping_templates",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       },
       "put": {
         "tags": [
           "shops"
         ],
         "summary": "Shops current shipping Templates upsert.",
-        "operationId": "shops.current.shippingTemplates.update",
+        "operationId": "current.shippingTemplates.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -2344,7 +2344,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -2458,7 +2458,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.shippingTemplate.upserted",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -2472,7 +2471,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/shipping_templates"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/shipping_templates",
+        "x-sdkwork-permission": "commerce.shops.self.write"
       }
     },
     "/app/v3/api/shops/current/applications": {
@@ -2481,7 +2481,7 @@
           "shops"
         ],
         "summary": "Shops current applications list.",
-        "operationId": "shops.current.applications.list",
+        "operationId": "current.applications.list",
         "parameters": [
           {
             "name": "status",
@@ -2598,16 +2598,16 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/applications"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/applications",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       },
       "post": {
         "tags": [
           "shops"
         ],
         "summary": "Shops current applications create.",
-        "operationId": "shops.current.applications.create",
+        "operationId": "current.applications.create",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -2615,7 +2615,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -2729,7 +2729,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.application.submitted",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -2743,7 +2742,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/applications"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/applications",
+        "x-sdkwork-permission": "commerce.shops.self.write"
       }
     },
     "/app/v3/api/shops/current/verifications": {
@@ -2752,7 +2752,7 @@
           "shops"
         ],
         "summary": "Shops current verifications list.",
-        "operationId": "shops.current.verifications.list",
+        "operationId": "current.verifications.list",
         "parameters": [
           {
             "name": "verification_type",
@@ -2877,9 +2877,9 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/verifications"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/verifications",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       }
     },
     "/app/v3/api/shops/current/status_events": {
@@ -2888,7 +2888,7 @@
           "shops"
         ],
         "summary": "Shops current status Events list.",
-        "operationId": "shops.current.statusEvents.list",
+        "operationId": "current.statusEvents.list",
         "parameters": [
           {
             "name": "event_type",
@@ -3005,9 +3005,9 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/status_events"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/status_events",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       }
     },
     "/app/v3/api/shops/current/channels": {
@@ -3016,7 +3016,7 @@
           "shops"
         ],
         "summary": "Shops current channels list.",
-        "operationId": "shops.current.channels.list",
+        "operationId": "current.channels.list",
         "parameters": [
           {
             "name": "channel_code",
@@ -3141,9 +3141,9 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/channels"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/channels",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       }
     },
     "/app/v3/api/shops/current/channels/{channelId}": {
@@ -3152,7 +3152,7 @@
           "shops"
         ],
         "summary": "Shops current channels update.",
-        "operationId": "shops.current.channels.update",
+        "operationId": "current.channels.update",
         "parameters": [
           {
             "name": "channelId",
@@ -3168,7 +3168,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -3282,7 +3282,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.channel.updated",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -3296,7 +3295,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/channels/{channelId}"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/channels/{channelId}",
+        "x-sdkwork-permission": "commerce.shops.self.write"
       }
     },
     "/app/v3/api/shops/current/fulfillment_profile": {
@@ -3305,7 +3305,7 @@
           "shops"
         ],
         "summary": "Shops current fulfillment Profile retrieve.",
-        "operationId": "shops.current.fulfillmentProfile.retrieve",
+        "operationId": "current.fulfillmentProfile.retrieve",
         "parameters": [],
         "responses": {
           "200": {
@@ -3415,16 +3415,16 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/fulfillment_profile"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/fulfillment_profile",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       },
       "patch": {
         "tags": [
           "shops"
         ],
         "summary": "Shops current fulfillment Profile update.",
-        "operationId": "shops.current.fulfillmentProfile.update",
+        "operationId": "current.fulfillmentProfile.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -3432,7 +3432,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -3546,7 +3546,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.fulfillmentProfile.updated",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -3560,7 +3559,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/fulfillment_profile"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/fulfillment_profile",
+        "x-sdkwork-permission": "commerce.shops.self.write"
       }
     },
     "/app/v3/api/shops/current/settlement_profile": {
@@ -3569,7 +3569,7 @@
           "shops"
         ],
         "summary": "Shops current settlement Profile retrieve.",
-        "operationId": "shops.current.settlementProfile.retrieve",
+        "operationId": "current.settlementProfile.retrieve",
         "parameters": [],
         "responses": {
           "200": {
@@ -3679,16 +3679,16 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/settlement_profile"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/settlement_profile",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       },
       "patch": {
         "tags": [
           "shops"
         ],
         "summary": "Shops current settlement Profile update.",
-        "operationId": "shops.current.settlementProfile.update",
+        "operationId": "current.settlementProfile.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -3696,7 +3696,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -3810,7 +3810,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.settlementProfile.updated",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -3824,7 +3823,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/settlement_profile"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/settlement_profile",
+        "x-sdkwork-permission": "commerce.shops.self.write"
       }
     },
     "/app/v3/api/shops/current/business_hours": {
@@ -3833,7 +3833,7 @@
           "shops"
         ],
         "summary": "Shops current business Hours retrieve.",
-        "operationId": "shops.current.businessHours.retrieve",
+        "operationId": "current.businessHours.retrieve",
         "parameters": [],
         "responses": {
           "200": {
@@ -3943,16 +3943,16 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/business_hours"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/business_hours",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       },
       "patch": {
         "tags": [
           "shops"
         ],
         "summary": "Shops current business Hours update.",
-        "operationId": "shops.current.businessHours.update",
+        "operationId": "current.businessHours.update",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -3960,7 +3960,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -4074,7 +4074,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.businessHours.updated",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -4088,7 +4087,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/business_hours"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/business_hours",
+        "x-sdkwork-permission": "commerce.shops.self.write"
       }
     },
     "/app/v3/api/shops/current/service_areas": {
@@ -4097,7 +4097,7 @@
           "shops"
         ],
         "summary": "Shops current service Areas list.",
-        "operationId": "shops.current.serviceAreas.list",
+        "operationId": "current.serviceAreas.list",
         "parameters": [
           {
             "name": "area_type",
@@ -4230,16 +4230,16 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/service_areas"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/service_areas",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       },
       "post": {
         "tags": [
           "shops"
         ],
         "summary": "Shops current service Areas create.",
-        "operationId": "shops.current.serviceAreas.create",
+        "operationId": "current.serviceAreas.create",
         "parameters": [
           {
             "name": "Idempotency-Key",
@@ -4247,7 +4247,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -4361,7 +4361,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.serviceArea.created",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -4375,7 +4374,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/service_areas"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/service_areas",
+        "x-sdkwork-permission": "commerce.shops.self.write"
       }
     },
     "/app/v3/api/shops/current/service_areas/{serviceAreaId}": {
@@ -4384,7 +4384,7 @@
           "shops"
         ],
         "summary": "Shops current service Areas update.",
-        "operationId": "shops.current.serviceAreas.update",
+        "operationId": "current.serviceAreas.update",
         "parameters": [
           {
             "name": "serviceAreaId",
@@ -4400,7 +4400,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -4514,7 +4514,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.serviceArea.updated",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -4528,7 +4527,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/service_areas/{serviceAreaId}"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/service_areas/{serviceAreaId}",
+        "x-sdkwork-permission": "commerce.shops.self.write"
       }
     },
     "/app/v3/api/shops/current/policies": {
@@ -4537,7 +4537,7 @@
           "shops"
         ],
         "summary": "Shops current policies list.",
-        "operationId": "shops.current.policies.list",
+        "operationId": "current.policies.list",
         "parameters": [
           {
             "name": "policy_type",
@@ -4662,9 +4662,9 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/policies"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/policies",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       }
     },
     "/app/v3/api/shops/current/policies/{policyId}": {
@@ -4673,7 +4673,7 @@
           "shops"
         ],
         "summary": "Shops current policies update.",
-        "operationId": "shops.current.policies.update",
+        "operationId": "current.policies.update",
         "parameters": [
           {
             "name": "policyId",
@@ -4689,7 +4689,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "minLength": 8,
+              "minLength": 1,
               "maxLength": 128
             },
             "description": "Client retry key scoped by tenant, principal, method, and path."
@@ -4803,7 +4803,6 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.write",
         "x-sdkwork-audit-event": "commerce.shop.policy.updated",
         "x-sdkwork-idempotent": true,
         "requestBody": {
@@ -4817,7 +4816,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/policies/{policyId}"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/policies/{policyId}",
+        "x-sdkwork-permission": "commerce.shops.self.write"
       }
     },
     "/app/v3/api/shops/current/deposit_account": {
@@ -4826,7 +4826,7 @@
           "shops"
         ],
         "summary": "Shops current deposit Account retrieve.",
-        "operationId": "shops.current.depositAccount.retrieve",
+        "operationId": "current.depositAccount.retrieve",
         "parameters": [],
         "responses": {
           "200": {
@@ -4936,9 +4936,9 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/deposit_account"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/deposit_account",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       }
     },
     "/app/v3/api/shops/current/risk_signals": {
@@ -4947,7 +4947,7 @@
           "shops"
         ],
         "summary": "Shops current risk Signals list.",
-        "operationId": "shops.current.riskSignals.list",
+        "operationId": "current.riskSignals.list",
         "parameters": [
           {
             "name": "signal_type",
@@ -5080,9 +5080,9 @@
         "x-sdkwork-request-context": "WebRequestContext",
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
-        "x-sdkwork-permission": "commerce.shops.self.read",
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/risk_signals"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/risk_signals",
+        "x-sdkwork-permission": "commerce.shops.self.read"
       }
     },
     "/app/v3/api/shops/current/products": {
@@ -5091,8 +5091,7 @@
           "shops"
         ],
         "summary": "Shops current products list.",
-        "operationId": "shops.current.products.list",
-        "x-sdkwork-permission": "commerce.shops.read",
+        "operationId": "current.products.list",
         "parameters": [
           {
             "name": "q",
@@ -5218,15 +5217,15 @@
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/products"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/products",
+        "x-sdkwork-permission": "commerce.shops.read"
       },
       "post": {
         "tags": [
           "shops"
         ],
         "summary": "Shops current products create.",
-        "operationId": "shops.current.products.create",
-        "x-sdkwork-permission": "commerce.shops.manage",
+        "operationId": "current.products.create",
         "parameters": [],
         "responses": {
           "201": {
@@ -5324,7 +5323,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/products"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/products",
+        "x-sdkwork-permission": "commerce.shops.manage"
       }
     },
     "/app/v3/api/shops/current/products/{productId}": {
@@ -5333,8 +5333,7 @@
           "shops"
         ],
         "summary": "Shops current products update.",
-        "operationId": "shops.current.products.update",
-        "x-sdkwork-permission": "commerce.shops.manage",
+        "operationId": "current.products.update",
         "parameters": [
           {
             "name": "productId",
@@ -5441,7 +5440,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/products/{productId}"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/products/{productId}",
+        "x-sdkwork-permission": "commerce.shops.manage"
       }
     },
     "/app/v3/api/shops/current/products/{productId}/publish": {
@@ -5450,8 +5450,7 @@
           "shops"
         ],
         "summary": "Shops current products publish.",
-        "operationId": "shops.current.products.publish",
-        "x-sdkwork-permission": "commerce.shops.manage",
+        "operationId": "current.products.publish",
         "parameters": [
           {
             "name": "productId",
@@ -5558,7 +5557,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/products/{productId}/publish"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/products/{productId}/publish",
+        "x-sdkwork-permission": "commerce.shops.manage"
       }
     },
     "/app/v3/api/shops/current/products/{productId}/unpublish": {
@@ -5567,8 +5567,7 @@
           "shops"
         ],
         "summary": "Shops current products unpublish.",
-        "operationId": "shops.current.products.unpublish",
-        "x-sdkwork-permission": "commerce.shops.manage",
+        "operationId": "current.products.unpublish",
         "parameters": [
           {
             "name": "productId",
@@ -5675,7 +5674,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/products/{productId}/unpublish"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/products/{productId}/unpublish",
+        "x-sdkwork-permission": "commerce.shops.manage"
       }
     },
     "/app/v3/api/shops/current/orders": {
@@ -5684,8 +5684,7 @@
           "shops"
         ],
         "summary": "Shops current orders list.",
-        "operationId": "shops.current.orders.list",
-        "x-sdkwork-permission": "commerce.shops.read",
+        "operationId": "current.orders.list",
         "parameters": [
           {
             "name": "status",
@@ -5803,7 +5802,8 @@
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/orders"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/orders",
+        "x-sdkwork-permission": "commerce.shops.read"
       }
     },
     "/app/v3/api/shops/current/orders/{orderId}": {
@@ -5812,8 +5812,7 @@
           "shops"
         ],
         "summary": "Shops current orders retrieve.",
-        "operationId": "shops.current.orders.retrieve",
-        "x-sdkwork-permission": "commerce.shops.read",
+        "operationId": "current.orders.retrieve",
         "parameters": [
           {
             "name": "orderId",
@@ -5910,7 +5909,8 @@
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/orders/{orderId}"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/orders/{orderId}",
+        "x-sdkwork-permission": "commerce.shops.read"
       }
     },
     "/app/v3/api/shops/current/orders/{orderId}/fulfillments": {
@@ -5919,8 +5919,7 @@
           "shops"
         ],
         "summary": "Shops current orders fulfillments create.",
-        "operationId": "shops.current.orders.fulfillments.create",
-        "x-sdkwork-permission": "commerce.shops.manage",
+        "operationId": "current.orders.fulfillments.create",
         "parameters": [
           {
             "name": "orderId",
@@ -6027,7 +6026,8 @@
           }
         },
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/orders/{orderId}/fulfillments"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/orders/{orderId}/fulfillments",
+        "x-sdkwork-permission": "commerce.shops.manage"
       }
     },
     "/app/v3/api/shops/current/settlements": {
@@ -6036,8 +6036,7 @@
           "shops"
         ],
         "summary": "Shops current settlements list.",
-        "operationId": "shops.current.settlements.list",
-        "x-sdkwork-permission": "commerce.shops.read",
+        "operationId": "current.settlements.list",
         "parameters": [
           {
             "name": "status",
@@ -6155,7 +6154,8 @@
         "x-sdkwork-api-surface": "app-api",
         "x-sdkwork-server-request-id": true,
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
-        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/settlements"
+        "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/current/settlements",
+        "x-sdkwork-permission": "commerce.shops.read"
       }
     }
   },

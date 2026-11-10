@@ -4,6 +4,126 @@ import type { ApiRequestOptions, HttpClient } from '../http/client';
 import type { ApproveShopRequest, ApproveShopSettlementProfileRequest, CloseShopRequest, CreateShopChannelRequest, CreateShopPolicyRequest, CreateShopRequest, CreateShopRiskSignalRequest, CreateShopServiceAreaRequest, RejectShopRequest, RejectShopSettlementProfileRequest, ResolveShopRiskSignalRequest, ResumeShopRequest, ReviewShopDepositAccountRequest, SdkWorkPageData, SubmitShopReviewRequest, SuspendShopRequest, UpdateShopBusinessHourRequest, UpdateShopChannelRequest, UpdateShopDepositAccountRequest, UpdateShopFulfillmentProfileRequest, UpdateShopPolicyRequest, UpdateShopRequest, UpdateShopServiceAreaRequest, UpdateShopSettlementProfileRequest, UpdateShopVerificationRequest, UpsertShopBrandAuthorizationRequest, UpsertShopCategoryBindingRequest, UpsertShopCustomerServiceRequest, UpsertShopQualificationRequest, UpsertShopReturnAddressRequest, UpsertShopShippingTemplateRequest } from '../types';
 
 
+export interface ShopsCloseCreateParams {
+  idempotencyKey: string;
+}
+
+export class ShopsCloseApi {
+  private client: HttpClient;
+
+  constructor(client: HttpClient) {
+    this.client = client;
+  }
+
+
+/** Shops close. */
+  async create(shopId: string, body: CloseShopRequest, params: ShopsCloseCreateParams, requestOptions?: ApiRequestOptions): Promise<Record<string, unknown>> {
+    const requestHeaders = buildRequestHeaders(
+      {
+        'Idempotency-Key': { value: params.idempotencyKey, style: 'simple', explode: false },
+      },
+      {}
+    );
+    return this.client.request<Record<string, unknown>>(backendApiPath(`/shops/${serializePathParameter(shopId, { name: 'shopId', style: 'simple', explode: false })}/close`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'POST' as any, body, contentType: 'application/json', ...(requestHeaders !== undefined ? { headers: requestHeaders } : {}), sdkworkUnwrapKind: 'item' });
+  }
+}
+
+export interface ShopsSuspendCreateParams {
+  idempotencyKey: string;
+}
+
+export class ShopsSuspendApi {
+  private client: HttpClient;
+
+  constructor(client: HttpClient) {
+    this.client = client;
+  }
+
+
+/** Shops suspend. */
+  async create(shopId: string, body: SuspendShopRequest, params: ShopsSuspendCreateParams, requestOptions?: ApiRequestOptions): Promise<Record<string, unknown>> {
+    const requestHeaders = buildRequestHeaders(
+      {
+        'Idempotency-Key': { value: params.idempotencyKey, style: 'simple', explode: false },
+      },
+      {}
+    );
+    return this.client.request<Record<string, unknown>>(backendApiPath(`/shops/${serializePathParameter(shopId, { name: 'shopId', style: 'simple', explode: false })}/suspend`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'POST' as any, body, contentType: 'application/json', ...(requestHeaders !== undefined ? { headers: requestHeaders } : {}), sdkworkUnwrapKind: 'item' });
+  }
+}
+
+export interface ShopsRejectCreateParams {
+  idempotencyKey: string;
+}
+
+export class ShopsRejectApi {
+  private client: HttpClient;
+
+  constructor(client: HttpClient) {
+    this.client = client;
+  }
+
+
+/** Shops reject. */
+  async create(shopId: string, body: RejectShopRequest, params: ShopsRejectCreateParams, requestOptions?: ApiRequestOptions): Promise<Record<string, unknown>> {
+    const requestHeaders = buildRequestHeaders(
+      {
+        'Idempotency-Key': { value: params.idempotencyKey, style: 'simple', explode: false },
+      },
+      {}
+    );
+    return this.client.request<Record<string, unknown>>(backendApiPath(`/shops/${serializePathParameter(shopId, { name: 'shopId', style: 'simple', explode: false })}/reject`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'POST' as any, body, contentType: 'application/json', ...(requestHeaders !== undefined ? { headers: requestHeaders } : {}), sdkworkUnwrapKind: 'item' });
+  }
+}
+
+export interface ShopsApproveCreateParams {
+  idempotencyKey: string;
+}
+
+export class ShopsApproveApi {
+  private client: HttpClient;
+
+  constructor(client: HttpClient) {
+    this.client = client;
+  }
+
+
+/** Shops approve. */
+  async create(shopId: string, body: ApproveShopRequest, params: ShopsApproveCreateParams, requestOptions?: ApiRequestOptions): Promise<Record<string, unknown>> {
+    const requestHeaders = buildRequestHeaders(
+      {
+        'Idempotency-Key': { value: params.idempotencyKey, style: 'simple', explode: false },
+      },
+      {}
+    );
+    return this.client.request<Record<string, unknown>>(backendApiPath(`/shops/${serializePathParameter(shopId, { name: 'shopId', style: 'simple', explode: false })}/approve`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'POST' as any, body, contentType: 'application/json', ...(requestHeaders !== undefined ? { headers: requestHeaders } : {}), sdkworkUnwrapKind: 'item' });
+  }
+}
+
+export interface ShopsSubmitReviewCreateParams {
+  idempotencyKey: string;
+}
+
+export class ShopsSubmitReviewApi {
+  private client: HttpClient;
+
+  constructor(client: HttpClient) {
+    this.client = client;
+  }
+
+
+/** Shops submit Review. */
+  async create(shopId: string, body: SubmitShopReviewRequest, params: ShopsSubmitReviewCreateParams, requestOptions?: ApiRequestOptions): Promise<Record<string, unknown>> {
+    const requestHeaders = buildRequestHeaders(
+      {
+        'Idempotency-Key': { value: params.idempotencyKey, style: 'simple', explode: false },
+      },
+      {}
+    );
+    return this.client.request<Record<string, unknown>>(backendApiPath(`/shops/${serializePathParameter(shopId, { name: 'shopId', style: 'simple', explode: false })}/submit_review`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'POST' as any, body, contentType: 'application/json', ...(requestHeaders !== undefined ? { headers: requestHeaders } : {}), sdkworkUnwrapKind: 'item' });
+  }
+}
+
 export class ShopsReadinessApi {
   private client: HttpClient;
 
@@ -788,27 +908,7 @@ export interface ShopsUpdateParams {
   idempotencyKey: string;
 }
 
-export interface ShopsSubmitReviewParams {
-  idempotencyKey: string;
-}
-
-export interface ShopsApproveParams {
-  idempotencyKey: string;
-}
-
-export interface ShopsRejectParams {
-  idempotencyKey: string;
-}
-
-export interface ShopsSuspendParams {
-  idempotencyKey: string;
-}
-
 export interface ShopsResumeParams {
-  idempotencyKey: string;
-}
-
-export interface ShopsCloseParams {
   idempotencyKey: string;
 }
 
@@ -832,6 +932,11 @@ export class ShopsApi {
   public readonly depositAccount: ShopsDepositAccountApi;
   public readonly riskSignals: ShopsRiskSignalsApi;
   public readonly readiness: ShopsReadinessApi;
+  public readonly submitReview: ShopsSubmitReviewApi;
+  public readonly approve: ShopsApproveApi;
+  public readonly reject: ShopsRejectApi;
+  public readonly suspend: ShopsSuspendApi;
+  public readonly close: ShopsCloseApi;
 
   constructor(client: HttpClient) {
     this.client = client;
@@ -853,6 +958,11 @@ export class ShopsApi {
     this.depositAccount = new ShopsDepositAccountApi(client);
     this.riskSignals = new ShopsRiskSignalsApi(client);
     this.readiness = new ShopsReadinessApi(client);
+    this.submitReview = new ShopsSubmitReviewApi(client);
+    this.approve = new ShopsApproveApi(client);
+    this.reject = new ShopsRejectApi(client);
+    this.suspend = new ShopsSuspendApi(client);
+    this.close = new ShopsCloseApi(client);
   }
 
 
@@ -878,50 +988,6 @@ export class ShopsApi {
     return this.client.request<Record<string, unknown>>(backendApiPath(`/shops/${serializePathParameter(shopId, { name: 'shopId', style: 'simple', explode: false })}`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'PATCH' as any, body, contentType: 'application/json', ...(requestHeaders !== undefined ? { headers: requestHeaders } : {}), sdkworkUnwrapKind: 'item' });
   }
 
-/** Shops submit Review. */
-  async submitReview(shopId: string, body: SubmitShopReviewRequest, params: ShopsSubmitReviewParams, requestOptions?: ApiRequestOptions): Promise<Record<string, unknown>> {
-    const requestHeaders = buildRequestHeaders(
-      {
-        'Idempotency-Key': { value: params.idempotencyKey, style: 'simple', explode: false },
-      },
-      {}
-    );
-    return this.client.request<Record<string, unknown>>(backendApiPath(`/shops/${serializePathParameter(shopId, { name: 'shopId', style: 'simple', explode: false })}/submit_review`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'POST' as any, body, contentType: 'application/json', ...(requestHeaders !== undefined ? { headers: requestHeaders } : {}), sdkworkUnwrapKind: 'item' });
-  }
-
-/** Shops approve. */
-  async approve(shopId: string, body: ApproveShopRequest, params: ShopsApproveParams, requestOptions?: ApiRequestOptions): Promise<Record<string, unknown>> {
-    const requestHeaders = buildRequestHeaders(
-      {
-        'Idempotency-Key': { value: params.idempotencyKey, style: 'simple', explode: false },
-      },
-      {}
-    );
-    return this.client.request<Record<string, unknown>>(backendApiPath(`/shops/${serializePathParameter(shopId, { name: 'shopId', style: 'simple', explode: false })}/approve`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'POST' as any, body, contentType: 'application/json', ...(requestHeaders !== undefined ? { headers: requestHeaders } : {}), sdkworkUnwrapKind: 'item' });
-  }
-
-/** Shops reject. */
-  async reject(shopId: string, body: RejectShopRequest, params: ShopsRejectParams, requestOptions?: ApiRequestOptions): Promise<Record<string, unknown>> {
-    const requestHeaders = buildRequestHeaders(
-      {
-        'Idempotency-Key': { value: params.idempotencyKey, style: 'simple', explode: false },
-      },
-      {}
-    );
-    return this.client.request<Record<string, unknown>>(backendApiPath(`/shops/${serializePathParameter(shopId, { name: 'shopId', style: 'simple', explode: false })}/reject`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'POST' as any, body, contentType: 'application/json', ...(requestHeaders !== undefined ? { headers: requestHeaders } : {}), sdkworkUnwrapKind: 'item' });
-  }
-
-/** Shops suspend. */
-  async suspend(shopId: string, body: SuspendShopRequest, params: ShopsSuspendParams, requestOptions?: ApiRequestOptions): Promise<Record<string, unknown>> {
-    const requestHeaders = buildRequestHeaders(
-      {
-        'Idempotency-Key': { value: params.idempotencyKey, style: 'simple', explode: false },
-      },
-      {}
-    );
-    return this.client.request<Record<string, unknown>>(backendApiPath(`/shops/${serializePathParameter(shopId, { name: 'shopId', style: 'simple', explode: false })}/suspend`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'POST' as any, body, contentType: 'application/json', ...(requestHeaders !== undefined ? { headers: requestHeaders } : {}), sdkworkUnwrapKind: 'item' });
-  }
-
 /** Shops resume. */
   async resume(shopId: string, body: ResumeShopRequest, params: ShopsResumeParams, requestOptions?: ApiRequestOptions): Promise<Record<string, unknown>> {
     const requestHeaders = buildRequestHeaders(
@@ -931,17 +997,6 @@ export class ShopsApi {
       {}
     );
     return this.client.request<Record<string, unknown>>(backendApiPath(`/shops/${serializePathParameter(shopId, { name: 'shopId', style: 'simple', explode: false })}/resume`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'POST' as any, body, contentType: 'application/json', ...(requestHeaders !== undefined ? { headers: requestHeaders } : {}), sdkworkUnwrapKind: 'item' });
-  }
-
-/** Shops close. */
-  async close(shopId: string, body: CloseShopRequest, params: ShopsCloseParams, requestOptions?: ApiRequestOptions): Promise<Record<string, unknown>> {
-    const requestHeaders = buildRequestHeaders(
-      {
-        'Idempotency-Key': { value: params.idempotencyKey, style: 'simple', explode: false },
-      },
-      {}
-    );
-    return this.client.request<Record<string, unknown>>(backendApiPath(`/shops/${serializePathParameter(shopId, { name: 'shopId', style: 'simple', explode: false })}/close`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'POST' as any, body, contentType: 'application/json', ...(requestHeaders !== undefined ? { headers: requestHeaders } : {}), sdkworkUnwrapKind: 'item' });
   }
 }
 
