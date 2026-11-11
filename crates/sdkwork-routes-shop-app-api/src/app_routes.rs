@@ -1294,6 +1294,9 @@ async fn create_current_product(
         Err(error) => return validation_response(error.message()),
     };
     let command = CreateProductSpuCommand {
+        // The authenticated caller on the app surface is whose write this is; the catalog stores
+        // it as `created_by`.
+        actor: subject.user_id.clone(),
         tenant_id: subject.tenant_id,
         organization_id,
         spu_no: body.product_no,
@@ -1302,6 +1305,14 @@ async fn create_current_product(
         description: body.description,
         product_type,
         category_id: body.category_id,
+        // The app-api request contract does not expose the catalog's fixed-semantics columns (its
+        // request body is the generic command envelope); model number, barcode, weight, volume, and
+        // tax class are authored on the admin/backend surface, which owns those fields.
+        model_no: None,
+        barcode: None,
+        weight_gram: None,
+        volume_ml: None,
+        tax_class_code: None,
     };
     if let Err(error) = command.validate() {
         return validation_response(error.message());
@@ -1330,12 +1341,20 @@ async fn update_current_product(
         Err(response) => return *response,
     };
     let command = UpdateProductSpuCommand {
+        actor: subject.user_id.clone(),
         tenant_id: subject.tenant_id,
         spu_id: product_id,
         title: body.title,
         subtitle: body.subtitle,
         description: body.description,
         category_id: body.category_id,
+        // As on create: the app-api contract does not carry the catalog's fixed-semantics columns,
+        // so this edit states nothing about them and the stored values stand.
+        model_no: None,
+        barcode: None,
+        weight_gram: None,
+        volume_ml: None,
+        tax_class_code: None,
         // The app-api edit body does not carry the lifecycle status yet, so the
         // edit leaves the stored status alone (merchandise command semantics).
         status: None,
@@ -1370,6 +1389,7 @@ async fn publish_current_product(
         Err(response) => return *response,
     };
     let command = PublishSpuCommand {
+        actor: subject.user_id.clone(),
         tenant_id: subject.tenant_id,
         spu_id: product_id,
         expected_version,
@@ -1402,6 +1422,7 @@ async fn unpublish_current_product(
         Err(response) => return *response,
     };
     let command = ArchiveSpuCommand {
+        actor: subject.user_id.clone(),
         tenant_id: subject.tenant_id,
         spu_id: product_id,
         expected_version,
