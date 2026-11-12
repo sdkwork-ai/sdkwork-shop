@@ -11,6 +11,10 @@ export interface CatalogBrandsListParams {
   pageSize?: number;
 }
 
+export interface CatalogBrandsRetrieveParams {
+  locale?: string;
+}
+
 export interface CatalogBrandsUpdateParams {
   ifMatch: string;
 }
@@ -44,8 +48,11 @@ export class CatalogBrandsApi {
   }
 
 /** Catalog brands retrieve. */
-  async retrieve(brandId: string, requestOptions?: ApiRequestOptions): Promise<Brand> {
-    return this.client.request<Brand>(backendApiPath(`/catalog/brands/${serializePathParameter(brandId, { name: 'brandId', style: 'simple', explode: false })}`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'GET' as any, sdkworkUnwrapKind: 'item' });
+  async retrieve(brandId: string, params?: CatalogBrandsRetrieveParams, requestOptions?: ApiRequestOptions): Promise<Brand> {
+    const query = buildQueryString([
+      { name: 'locale', value: params?.locale, style: 'form', explode: true, allowReserved: false },
+    ]);
+    return this.client.request<Brand>(appendQueryString(backendApiPath(`/catalog/brands/${serializePathParameter(brandId, { name: 'brandId', style: 'simple', explode: false })}`), query), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'GET' as any, sdkworkUnwrapKind: 'item' });
   }
 
 /** Catalog brands update. */
@@ -392,6 +399,10 @@ export interface CatalogAttributesManagementListParams {
   pageSize?: number;
 }
 
+export interface CatalogAttributesManagementRetrieveParams {
+  locale?: string;
+}
+
 export class CatalogAttributesManagementApi {
   private client: HttpClient;
 
@@ -412,8 +423,11 @@ export class CatalogAttributesManagementApi {
   }
 
 /** Catalog attributes management retrieve. */
-  async retrieve(attributeId: string, requestOptions?: ApiRequestOptions): Promise<Attribute> {
-    return this.client.request<Attribute>(backendApiPath(`/catalog/attributes/${serializePathParameter(attributeId, { name: 'attributeId', style: 'simple', explode: false })}`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'GET' as any, sdkworkUnwrapKind: 'item' });
+  async retrieve(attributeId: string, params?: CatalogAttributesManagementRetrieveParams, requestOptions?: ApiRequestOptions): Promise<Attribute> {
+    const query = buildQueryString([
+      { name: 'locale', value: params?.locale, style: 'form', explode: true, allowReserved: false },
+    ]);
+    return this.client.request<Attribute>(appendQueryString(backendApiPath(`/catalog/attributes/${serializePathParameter(attributeId, { name: 'attributeId', style: 'simple', explode: false })}`), query), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'GET' as any, sdkworkUnwrapKind: 'item' });
   }
 }
 
@@ -465,6 +479,10 @@ export interface CatalogSkusDeleteParams {
   ifMatch: string;
 }
 
+export interface CatalogSkusRetrieveParams {
+  locale?: string;
+}
+
 export class CatalogSkusApi {
   private client: HttpClient;
 
@@ -514,8 +532,11 @@ export class CatalogSkusApi {
   }
 
 /** Catalog skus retrieve. */
-  async retrieve(skuId: string, requestOptions?: ApiRequestOptions): Promise<Sku> {
-    return this.client.request<Sku>(backendApiPath(`/catalog/skus/${serializePathParameter(skuId, { name: 'skuId', style: 'simple', explode: false })}`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'GET' as any, sdkworkUnwrapKind: 'item' });
+  async retrieve(skuId: string, params?: CatalogSkusRetrieveParams, requestOptions?: ApiRequestOptions): Promise<Sku> {
+    const query = buildQueryString([
+      { name: 'locale', value: params?.locale, style: 'form', explode: true, allowReserved: false },
+    ]);
+    return this.client.request<Sku>(appendQueryString(backendApiPath(`/catalog/skus/${serializePathParameter(skuId, { name: 'skuId', style: 'simple', explode: false })}`), query), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'GET' as any, sdkworkUnwrapKind: 'item' });
   }
 }
 
@@ -555,6 +576,10 @@ export interface CatalogProductsManagementListParams {
   sort?: string;
 }
 
+export interface CatalogProductsManagementRetrieveParams {
+  locale?: string;
+}
+
 export class CatalogProductsManagementApi {
   private client: HttpClient;
 
@@ -580,8 +605,11 @@ export class CatalogProductsManagementApi {
   }
 
 /** Catalog products management retrieve. */
-  async retrieve(productId: string, requestOptions?: ApiRequestOptions): Promise<Product> {
-    return this.client.request<Product>(backendApiPath(`/catalog/products/${serializePathParameter(productId, { name: 'productId', style: 'simple', explode: false })}`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'GET' as any, sdkworkUnwrapKind: 'item' });
+  async retrieve(productId: string, params?: CatalogProductsManagementRetrieveParams, requestOptions?: ApiRequestOptions): Promise<Product> {
+    const query = buildQueryString([
+      { name: 'locale', value: params?.locale, style: 'form', explode: true, allowReserved: false },
+    ]);
+    return this.client.request<Product>(appendQueryString(backendApiPath(`/catalog/products/${serializePathParameter(productId, { name: 'productId', style: 'simple', explode: false })}`), query), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'GET' as any, sdkworkUnwrapKind: 'item' });
   }
 }
 
@@ -671,6 +699,10 @@ export interface CatalogCategoriesManagementListParams {
   pageSize?: number;
 }
 
+export interface CatalogCategoriesManagementRetrieveParams {
+  locale?: string;
+}
+
 export class CatalogCategoriesManagementApi {
   private client: HttpClient;
 
@@ -692,8 +724,11 @@ export class CatalogCategoriesManagementApi {
   }
 
 /** Catalog categories management retrieve. */
-  async retrieve(categoryId: string, requestOptions?: ApiRequestOptions): Promise<Category> {
-    return this.client.request<Category>(backendApiPath(`/catalog/categories/${serializePathParameter(categoryId, { name: 'categoryId', style: 'simple', explode: false })}`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'GET' as any, sdkworkUnwrapKind: 'item' });
+  async retrieve(categoryId: string, params?: CatalogCategoriesManagementRetrieveParams, requestOptions?: ApiRequestOptions): Promise<Category> {
+    const query = buildQueryString([
+      { name: 'locale', value: params?.locale, style: 'form', explode: true, allowReserved: false },
+    ]);
+    return this.client.request<Category>(appendQueryString(backendApiPath(`/catalog/categories/${serializePathParameter(categoryId, { name: 'categoryId', style: 'simple', explode: false })}`), query), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'GET' as any, sdkworkUnwrapKind: 'item' });
   }
 }
 

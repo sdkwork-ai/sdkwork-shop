@@ -659,6 +659,10 @@ pub fn build_app_shop_router(
         .with_state(AppShopState { shop, catalog })
 }
 
+// The error arm is a fully rendered axum `Response` — the same shape every
+// handler in this crate returns — so boxing it here would only move the size
+// the router already carries.
+#[allow(clippy::result_large_err)]
 async fn current_scope(
     runtime_context: Option<Extension<IamAppContext>>,
 ) -> Result<ShopScopeQuery, Response> {
@@ -1264,6 +1268,8 @@ async fn list_current_products(
         None,
         None,
         None,
+        None,
+        None,
     ) {
         Ok(v) => v,
         Err(e) => return validation_response(e.message()),
@@ -1306,8 +1312,10 @@ async fn create_current_product(
         product_type,
         category_id: body.category_id,
         // The app-api request contract does not expose the catalog's fixed-semantics columns (its
-        // request body is the generic command envelope); model number, barcode, weight, volume, and
-        // tax class are authored on the admin/backend surface, which owns those fields.
+        // request body is the generic command envelope); brand, model number, barcode, weight,
+        // volume, and tax class are authored on the admin/backend surface, which owns those fields.
+        brand_id: None,
+        locale: None,
         model_no: None,
         barcode: None,
         weight_gram: None,
@@ -1350,6 +1358,8 @@ async fn update_current_product(
         category_id: body.category_id,
         // As on create: the app-api contract does not carry the catalog's fixed-semantics columns,
         // so this edit states nothing about them and the stored values stand.
+        brand_id: None,
+        locale: None,
         model_no: None,
         barcode: None,
         weight_gram: None,

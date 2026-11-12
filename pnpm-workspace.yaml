@@ -40,6 +40,11 @@ packages:
 overrides:
   react: "catalog:"
   react-dom: "catalog:"
+  # The shared ui packages pin lucide-react 1.7.0 while this workspace's catalog
+  # carries the platform version; pinning the override here resolves every
+  # lucide import to one instance, which is what makes the icon component types
+  # assignable across the console and the shared ui panels.
+  "lucide-react": "catalog:"
 
 catalog:
   "@tailwindcss/vite": ^4.3.3
