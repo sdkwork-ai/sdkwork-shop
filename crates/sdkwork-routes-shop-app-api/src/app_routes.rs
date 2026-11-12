@@ -1302,11 +1302,13 @@ async fn create_current_product(
         tenant_id: subject.tenant_id,
         organization_id,
         spu_no: body.product_no,
+        locale: None,
         title: body.title,
         subtitle: body.subtitle,
         description: body.description,
         product_type,
         category_id: body.category_id,
+        brand_id: None,
         // The app-api request contract does not expose the catalog's fixed-semantics columns (its
         // request body is the generic command envelope); model number, barcode, weight, volume, and
         // tax class are authored on the admin/backend surface, which owns those fields.
@@ -1346,10 +1348,12 @@ async fn update_current_product(
         actor: subject.user_id.clone(),
         tenant_id: subject.tenant_id,
         spu_id: product_id,
+        locale: None,
         title: body.title,
         subtitle: body.subtitle,
         description: body.description,
         category_id: body.category_id,
+        brand_id: None,
         // As on create: the app-api contract does not carry the catalog's fixed-semantics columns,
         // so this edit states nothing about them and the stored values stand.
         model_no: None,
