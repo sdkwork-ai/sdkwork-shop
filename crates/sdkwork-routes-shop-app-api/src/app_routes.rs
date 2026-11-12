@@ -1264,6 +1264,8 @@ async fn list_current_products(
         None,
         None,
         None,
+        None,
+        None,
     ) {
         Ok(v) => v,
         Err(e) => return validation_response(e.message()),
