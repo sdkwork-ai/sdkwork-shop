@@ -33,7 +33,7 @@ impl ShopDatabaseHost {
 /// and run init + migrate + seed through
 /// `RegistryLifecycleOrchestrator::bootstrap_all`.
 pub fn database_module() -> Result<DefaultDatabaseModule, SpiError> {
-    DefaultDatabaseModule::from_app_root(&resolve_app_root())
+    DefaultDatabaseModule::from_app_root(resolve_app_root())
 }
 
 pub async fn bootstrap_shop_database(pool: DatabasePool) -> Result<ShopDatabaseHost, String> {

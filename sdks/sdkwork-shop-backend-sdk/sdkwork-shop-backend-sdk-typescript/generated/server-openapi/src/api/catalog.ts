@@ -1,8 +1,75 @@
 import { backendApiPath } from './paths';
 import type { ApiRequestOptions, HttpClient } from '../http/client';
 
-import type { Attribute, AttributeValue, Category, CategoryAttribute, CreateAttributeRequest, CreateAttributeValueRequest, CreateCategoryAttributeRequest, CreateCategoryRequest, CreateMediaRequest, CreatePriceListItemRequest, CreatePriceListRequest, CreateProductRequest, CreateSkuRequest, Media, PageInfo, PriceList, PriceListItem, Product, ProductAttributes, ReplaceProductAttributesRequest, Sku, UpdateAttributeRequest, UpdateAttributeValueRequest, UpdateCategoryAttributeRequest, UpdateCategoryRequest, UpdateMediaRequest, UpdatePriceListItemRequest, UpdatePriceListRequest, UpdateProductRequest, UpdateSkuRequest } from '../types';
+import type { Attribute, AttributeValue, Brand, Category, CategoryAttribute, CreateAttributeRequest, CreateAttributeValueRequest, CreateBrandRequest, CreateCategoryAttributeRequest, CreateCategoryRequest, CreateMediaRequest, CreatePriceListItemRequest, CreatePriceListRequest, CreateProductRequest, CreateSkuRequest, Media, PageInfo, PriceList, PriceListItem, Product, ProductAttributes, ReplaceProductAttributesRequest, Sku, UpdateAttributeRequest, UpdateAttributeValueRequest, UpdateBrandRequest, UpdateCategoryAttributeRequest, UpdateCategoryRequest, UpdateMediaRequest, UpdatePriceListItemRequest, UpdatePriceListRequest, UpdateProductRequest, UpdateSkuRequest } from '../types';
 
+
+export interface CatalogBrandsListParams {
+  status?: string;
+  locale?: string;
+  page?: number;
+  pageSize?: number;
+}
+
+export interface CatalogBrandsUpdateParams {
+  ifMatch: string;
+}
+
+export interface CatalogBrandsDeleteParams {
+  ifMatch: string;
+}
+
+export class CatalogBrandsApi {
+  private client: HttpClient;
+
+  constructor(client: HttpClient) {
+    this.client = client;
+  }
+
+
+/** Catalog brands list. */
+  async list(params?: CatalogBrandsListParams, requestOptions?: ApiRequestOptions): Promise<{ items: Brand[]; pageInfo: PageInfo; }> {
+    const query = buildQueryString([
+      { name: 'status', value: params?.status, style: 'form', explode: true, allowReserved: false },
+      { name: 'locale', value: params?.locale, style: 'form', explode: true, allowReserved: false },
+      { name: 'page', value: params?.page, style: 'form', explode: true, allowReserved: false },
+      { name: 'page_size', value: params?.pageSize, style: 'form', explode: true, allowReserved: false },
+    ]);
+    return this.client.request<{ items: Brand[]; pageInfo: PageInfo; }>(appendQueryString(backendApiPath(`/catalog/brands`), query), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'GET' as any, sdkworkUnwrapKind: 'page' });
+  }
+
+/** Catalog brands create. */
+  async create(body: CreateBrandRequest, requestOptions?: ApiRequestOptions): Promise<Brand> {
+    return this.client.request<Brand>(backendApiPath(`/catalog/brands`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'POST' as any, body, contentType: 'application/json', sdkworkUnwrapKind: 'item' });
+  }
+
+/** Catalog brands retrieve. */
+  async retrieve(brandId: string, requestOptions?: ApiRequestOptions): Promise<Brand> {
+    return this.client.request<Brand>(backendApiPath(`/catalog/brands/${serializePathParameter(brandId, { name: 'brandId', style: 'simple', explode: false })}`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'GET' as any, sdkworkUnwrapKind: 'item' });
+  }
+
+/** Catalog brands update. */
+  async update(brandId: string, params: CatalogBrandsUpdateParams, body?: UpdateBrandRequest, requestOptions?: ApiRequestOptions): Promise<Brand> {
+    const requestHeaders = buildRequestHeaders(
+      {
+        'If-Match': { value: params.ifMatch, style: 'simple', explode: false },
+      },
+      {}
+    );
+    return this.client.request<Brand>(backendApiPath(`/catalog/brands/${serializePathParameter(brandId, { name: 'brandId', style: 'simple', explode: false })}`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'PATCH' as any, ...(body !== undefined ? { body, contentType: 'application/json' } : {}), ...(requestHeaders !== undefined ? { headers: requestHeaders } : {}), sdkworkUnwrapKind: 'item' });
+  }
+
+/** Catalog brands delete. */
+  async delete(brandId: string, params: CatalogBrandsDeleteParams, requestOptions?: ApiRequestOptions): Promise<void> {
+    const requestHeaders = buildRequestHeaders(
+      {
+        'If-Match': { value: params.ifMatch, style: 'simple', explode: false },
+      },
+      {}
+    );
+    return this.client.request<void>(backendApiPath(`/catalog/brands/${serializePathParameter(brandId, { name: 'brandId', style: 'simple', explode: false })}`), { ...(requestOptions?.signal !== undefined ? { signal: requestOptions.signal } : {}), ...(requestOptions?.timeout !== undefined ? { timeout: requestOptions.timeout } : {}), method: 'DELETE' as any, ...(requestHeaders !== undefined ? { headers: requestHeaders } : {}) });
+  }
+}
 
 export interface CatalogPriceListItemsListParams {
   listId: string;
@@ -71,6 +138,7 @@ export class CatalogPriceListItemsApi {
 export interface CatalogAttributeValuesListParams {
   attributeId: string;
   status?: string;
+  locale?: string;
   page?: number;
   pageSize?: number;
 }
@@ -96,6 +164,7 @@ export class CatalogAttributeValuesApi {
     const query = buildQueryString([
       { name: 'attribute_id', value: params.attributeId, style: 'form', explode: true, allowReserved: false },
       { name: 'status', value: params.status, style: 'form', explode: true, allowReserved: false },
+      { name: 'locale', value: params.locale, style: 'form', explode: true, allowReserved: false },
       { name: 'page', value: params.page, style: 'form', explode: true, allowReserved: false },
       { name: 'page_size', value: params.pageSize, style: 'form', explode: true, allowReserved: false },
     ]);
@@ -318,6 +387,7 @@ export class CatalogCategoryAttributesApi {
 
 export interface CatalogAttributesManagementListParams {
   status?: string;
+  locale?: string;
   page?: number;
   pageSize?: number;
 }
@@ -334,6 +404,7 @@ export class CatalogAttributesManagementApi {
   async list(params?: CatalogAttributesManagementListParams, requestOptions?: ApiRequestOptions): Promise<{ items: Attribute[]; pageInfo: PageInfo; }> {
     const query = buildQueryString([
       { name: 'status', value: params?.status, style: 'form', explode: true, allowReserved: false },
+      { name: 'locale', value: params?.locale, style: 'form', explode: true, allowReserved: false },
       { name: 'page', value: params?.page, style: 'form', explode: true, allowReserved: false },
       { name: 'page_size', value: params?.pageSize, style: 'form', explode: true, allowReserved: false },
     ]);
@@ -381,6 +452,7 @@ export interface CatalogSkusListParams {
   productId?: string;
   attributeValueId?: string;
   status?: string;
+  locale?: string;
   page?: number;
   pageSize?: number;
 }
@@ -407,6 +479,7 @@ export class CatalogSkusApi {
       { name: 'product_id', value: params?.productId, style: 'form', explode: true, allowReserved: false },
       { name: 'attribute_value_id', value: params?.attributeValueId, style: 'form', explode: true, allowReserved: false },
       { name: 'status', value: params?.status, style: 'form', explode: true, allowReserved: false },
+      { name: 'locale', value: params?.locale, style: 'form', explode: true, allowReserved: false },
       { name: 'page', value: params?.page, style: 'form', explode: true, allowReserved: false },
       { name: 'page_size', value: params?.pageSize, style: 'form', explode: true, allowReserved: false },
     ]);
@@ -473,8 +546,10 @@ export class CatalogProductsAttributesApi {
 export interface CatalogProductsManagementListParams {
   q?: string;
   categoryId?: string;
+  brandId?: string;
   productType?: string;
   status?: string;
+  locale?: string;
   page?: number;
   pageSize?: number;
   sort?: string;
@@ -493,8 +568,10 @@ export class CatalogProductsManagementApi {
     const query = buildQueryString([
       { name: 'q', value: params?.q, style: 'form', explode: true, allowReserved: false },
       { name: 'category_id', value: params?.categoryId, style: 'form', explode: true, allowReserved: false },
+      { name: 'brand_id', value: params?.brandId, style: 'form', explode: true, allowReserved: false },
       { name: 'product_type', value: params?.productType, style: 'form', explode: true, allowReserved: false },
       { name: 'status', value: params?.status, style: 'form', explode: true, allowReserved: false },
+      { name: 'locale', value: params?.locale, style: 'form', explode: true, allowReserved: false },
       { name: 'page', value: params?.page, style: 'form', explode: true, allowReserved: false },
       { name: 'page_size', value: params?.pageSize, style: 'form', explode: true, allowReserved: false },
       { name: 'sort', value: params?.sort, style: 'form', explode: true, allowReserved: false },
@@ -589,6 +666,7 @@ export class CatalogProductsApi {
 export interface CatalogCategoriesManagementListParams {
   parentId?: string;
   status?: string;
+  locale?: string;
   page?: number;
   pageSize?: number;
 }
@@ -606,6 +684,7 @@ export class CatalogCategoriesManagementApi {
     const query = buildQueryString([
       { name: 'parent_id', value: params?.parentId, style: 'form', explode: true, allowReserved: false },
       { name: 'status', value: params?.status, style: 'form', explode: true, allowReserved: false },
+      { name: 'locale', value: params?.locale, style: 'form', explode: true, allowReserved: false },
       { name: 'page', value: params?.page, style: 'form', explode: true, allowReserved: false },
       { name: 'page_size', value: params?.pageSize, style: 'form', explode: true, allowReserved: false },
     ]);
@@ -674,6 +753,7 @@ export class CatalogApi {
   public readonly media: CatalogMediaApi;
   public readonly attributeValues: CatalogAttributeValuesApi;
   public readonly priceListItems: CatalogPriceListItemsApi;
+  public readonly brands: CatalogBrandsApi;
 
   constructor(client: HttpClient) {
     this.categories = new CatalogCategoriesApi(client);
@@ -685,6 +765,7 @@ export class CatalogApi {
     this.media = new CatalogMediaApi(client);
     this.attributeValues = new CatalogAttributeValuesApi(client);
     this.priceListItems = new CatalogPriceListItemsApi(client);
+    this.brands = new CatalogBrandsApi(client);
   }
 
 }

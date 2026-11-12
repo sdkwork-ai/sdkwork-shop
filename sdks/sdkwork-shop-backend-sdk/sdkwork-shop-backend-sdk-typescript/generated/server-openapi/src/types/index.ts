@@ -78,6 +78,10 @@ export type { PriceListItem } from './price-list-item';
 export type { PriceListItemListResponse } from './price-list-item-list-response';
 export type { CreatePriceListItemRequest } from './create-price-list-item-request';
 export type { UpdatePriceListItemRequest } from './update-price-list-item-request';
+export type { Brand } from './brand';
+export type { BrandListResponse } from './brand-list-response';
+export type { CreateBrandRequest } from './create-brand-request';
+export type { UpdateBrandRequest } from './update-brand-request';
 export type { CategoriesCreateResponse201 } from './categories-create-response201';
 export type { CategoriesUpdateResponse } from './categories-update-response';
 export type { CategoriesManagementRetrieveResponse } from './categories-management-retrieve-response';
@@ -105,3 +109,7 @@ export type { AttributeValuesUpdateResponse } from './attribute-values-update-re
 export type { ProductsAttributesUpdateResponse } from './products-attributes-update-response';
 export type { PriceListItemsCreateResponse201 } from './price-list-items-create-response201';
 export type { PriceListItemsUpdateResponse } from './price-list-items-update-response';
+export type { BrandsListResponse } from './brands-list-response';
+export type { BrandsCreateResponse201 } from './brands-create-response201';
+export type { BrandsRetrieveResponse } from './brands-retrieve-response';
+export type { BrandsUpdateResponse } from './brands-update-response';

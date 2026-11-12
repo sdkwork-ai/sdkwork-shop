@@ -27,4 +27,16 @@ export interface CreateSkuRequest {
   weightGram?: string;
   /** What happens when the tracked stock runs out. `backorder` requires inventoryTracking `quantity` (ck_commerce_product_sku_policy_requires_tracking); the pairing is checked at the boundary with both fields named. */
   inventoryPolicy: 'deny' | 'backorder';
+  /** The quantity a single order must buy at least. Defaults to 1. */
+  minOrderQuantity?: string;
+  /** The quantity a single order may buy at most, when capped. */
+  maxOrderQuantity?: string;
+  /** The step the orderable quantity moves in. Defaults to 1. */
+  stepQuantity?: string;
+  /** The unit the buyer names (a box, a can), when declared. */
+  packageUnit?: string;
+  /** How many sellable units one package holds, when declared. */
+  unitsPerPackage?: string;
+  /** The locale the text fields are written in. Omitted — or the default language — writes the base row; any other locale writes a translation row and leaves the base row alone. */
+  locale?: string;
 }

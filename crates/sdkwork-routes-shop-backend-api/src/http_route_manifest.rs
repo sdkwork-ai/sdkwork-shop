@@ -7,12 +7,7 @@ const HTTP_ROUTES: &[HttpRoute] = &[
         "shop",
         "management.list",
     ),
-    HttpRoute::dual_token(
-        HttpMethod::Post,
-        "/backend/v3/api/shops",
-        "shop",
-        "create",
-    ),
+    HttpRoute::dual_token(HttpMethod::Post, "/backend/v3/api/shops", "shop", "create"),
     HttpRoute::dual_token(
         HttpMethod::Get,
         "/backend/v3/api/shops/{shopId}",

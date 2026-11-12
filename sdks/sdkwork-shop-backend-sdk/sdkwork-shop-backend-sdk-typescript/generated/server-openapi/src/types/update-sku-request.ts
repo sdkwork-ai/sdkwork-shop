@@ -25,4 +25,16 @@ export interface UpdateSkuRequest {
   weightGram?: string | null;
   /** The repository checks the pairing against the *effective* values after the merge, because a command that only states the policy cannot see the stored tracking mode. */
   inventoryPolicy?: 'deny' | 'backorder';
+  /** Restated minimum. The default (1) is restated as a value, never cleared. */
+  minOrderQuantity?: string;
+  /** Three-state. An explicit null removes the cap. */
+  maxOrderQuantity?: string | null;
+  /** Restated step. The default (1) is restated as a value, never cleared. */
+  stepQuantity?: string;
+  /** Three-state. */
+  packageUnit?: string | null;
+  /** Three-state. */
+  unitsPerPackage?: string | null;
+  /** The locale the text fields are written in. Omitted — or the default language — writes the base row; any other locale writes a translation row and leaves the base row alone. */
+  locale?: string;
 }

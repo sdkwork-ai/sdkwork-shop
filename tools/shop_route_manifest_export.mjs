@@ -2,6 +2,7 @@
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -158,11 +159,36 @@ function routeManifest(routes, target, module) {
   };
 }
 
+/**
+ * The gate checks route-set synchronization, not formatting: the manifest
+ * files are Rust sources `cargo fmt` owns, and its line wrapping may differ
+ * from this exporter's emitter without the route set having drifted. Both
+ * sides are compared with whitespace collapsed, so a rustfmt pass can never
+ * read as a route drift.
+ */
+function normalizeRouteContent(value) {
+  return value.replace(/\s+/gu, '').replace(/,\)/gu, ')');
+}
+
 function synchronize(relativePath, content) {
   const targetPath = path.join(root, relativePath);
   const current = existsSync(targetPath) ? readFileSync(targetPath, 'utf8') : '';
-  if (checkMode && current !== content) throw new Error(`${relativePath} is not synchronized`);
-  if (!checkMode && current !== content) {
+  if (checkMode && normalizeRouteContent(current) !== normalizeRouteContent(content)) {
+    if (process.env.DEBUG_MANIFEST_SYNC) {
+      const a = normalizeRouteContent(current);
+      const b = normalizeRouteContent(content);
+      for (let i = 0; i < Math.max(a.length, b.length); i += 1) {
+        if (a[i] !== b[i]) {
+          console.error('DEBUG first diff at', i);
+          console.error('disk :', JSON.stringify(a.slice(i - 60, i + 80)));
+          console.error('emit :', JSON.stringify(b.slice(i - 60, i + 80)));
+          break;
+        }
+      }
+    }
+    throw new Error(`${relativePath} is not synchronized`);
+  }
+  if (!checkMode && normalizeRouteContent(current) !== normalizeRouteContent(content)) {
     mkdirSync(path.dirname(targetPath), { recursive: true });
     writeFileSync(targetPath, content, 'utf8');
   }
@@ -195,6 +221,13 @@ try {
       synchronize(module.manifestTarget, manifest);
       synchronize(module.rustTarget, renderRust(routes, module.rustFunction));
     }
+  }
+  if (!checkMode) {
+    // The emitter writes one call per route and `cargo fmt` owns the line
+    // wrapping, so materialization ends inside rustfmt's jurisdiction: the
+    // written manifests must be rustfmt-clean or `format:check` would answer
+    // every materialization with a formatting diff.
+    execFileSync('cargo', ['fmt', '--all'], { cwd: root, stdio: 'inherit' });
   }
   process.stdout.write(
     `[shop_route_manifest_export] ${checkMode ? 'check passed' : 'materialized'} `

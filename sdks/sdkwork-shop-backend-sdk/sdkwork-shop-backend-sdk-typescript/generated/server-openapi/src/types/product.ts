@@ -9,6 +9,8 @@ export interface Product {
   productNo: string;
   /** Owning category id. */
   categoryId: string;
+  /** The brand this product belongs to, when one is declared. fk_commerce_product_spu_brand keeps the reference real. */
+  brandId?: string | null;
   /** Default-locale name. Bounded by ck_commerce_product_spu_name_length. */
   name: string;
   /** Default-locale marketing title. */

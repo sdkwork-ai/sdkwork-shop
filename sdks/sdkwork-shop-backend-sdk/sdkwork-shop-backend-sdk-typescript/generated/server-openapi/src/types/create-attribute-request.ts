@@ -15,4 +15,6 @@ export interface CreateAttributeRequest {
   sortOrder?: string;
   /** Optional initial enumeration. Each entry becomes one commerce_product_attribute_value row. Only valid for valueType `enum`: a free-text attribute has no dictionary to seed. */
   values?: string[];
+  /** The locale the text fields are written in. Omitted — or the default language — writes the base row; any other locale writes a translation row and leaves the base row alone. */
+  locale?: string;
 }

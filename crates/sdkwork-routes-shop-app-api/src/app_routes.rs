@@ -28,8 +28,8 @@ use crate::http_envelope::{
 };
 use crate::subject::app_runtime_subject_from_extension;
 use sdkwork_merchandise_web_support::{
-    expected_version_from_if_match, map_product, stale_version_response, success_resource_with_etag,
-    CreateSpuBody, UpdateSpuBody,
+    expected_version_from_if_match, map_product, stale_version_response,
+    success_resource_with_etag, CreateSpuBody, UpdateSpuBody,
 };
 
 pub type CommerceShopFuture<'a, T> =

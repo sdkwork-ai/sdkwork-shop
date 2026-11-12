@@ -22,4 +22,8 @@ export interface CreateProductRequest {
   volumeMl?: string;
   /** The tenant's tax-classification key for this product. */
   taxClassCode?: string;
+  /** The brand this product belongs to, when one is declared. */
+  brandId?: string;
+  /** The locale the text fields are written in. Omitted — or the default language — writes the base row; any other locale writes a translation row and leaves the base row alone. */
+  locale?: string;
 }

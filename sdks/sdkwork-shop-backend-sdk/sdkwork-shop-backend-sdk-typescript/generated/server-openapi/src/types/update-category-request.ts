@@ -9,4 +9,6 @@ export interface UpdateCategoryRequest {
   status?: 'active' | 'inactive';
   /** Three-state. Absent keeps the stored back-office position; an explicit null removes the category from the back-office tree; an id moves it. */
   backParentId?: string | null;
+  /** The locale the text fields are written in. Omitted — or the default language — writes the base row; any other locale writes a translation row and leaves the base row alone. */
+  locale?: string;
 }

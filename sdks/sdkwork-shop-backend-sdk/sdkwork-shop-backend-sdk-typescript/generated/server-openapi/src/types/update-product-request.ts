@@ -19,4 +19,8 @@ export interface UpdateProductRequest {
   volumeMl?: string | null;
   /** Three-state. */
   taxClassCode?: string | null;
+  /** Three-state. Absent keeps the stored brand; an explicit null detaches the product from its brand; an id moves it. */
+  brandId?: string | null;
+  /** The locale the text fields are written in. Omitted — or the default language — writes the base row; any other locale writes a translation row and leaves the base row alone. */
+  locale?: string;
 }

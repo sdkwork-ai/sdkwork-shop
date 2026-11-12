@@ -29,8 +29,9 @@ client.setAccessToken('your-access-token');
 // Use the SDK
 const params = {
   status: 'status',
-  page: 2,
-  page_size: 3,
+  locale: 'locale',
+  page: 3,
+  page_size: 4,
 };
 const result = await client.catalog.attributes.management.list(params);
 ```
@@ -85,8 +86,9 @@ const result = await client.shops.management.list(params);
 // Catalog attributes management list.
 const params = {
   status: 'status',
-  page: 2,
-  page_size: 3,
+  locale: 'locale',
+  page: 3,
+  page_size: 4,
 };
 const result = await client.catalog.attributes.management.list(params);
 ```
@@ -99,8 +101,9 @@ import { SdkworkBackendClient, NetworkError, TimeoutError, AuthenticationError }
 try {
   const params = {
     status: 'status',
-    page: 2,
-    page_size: 3,
+    locale: 'locale',
+    page: 3,
+    page_size: 4,
   };
   const result = await client.catalog.attributes.management.list(params);
 } catch (error) {

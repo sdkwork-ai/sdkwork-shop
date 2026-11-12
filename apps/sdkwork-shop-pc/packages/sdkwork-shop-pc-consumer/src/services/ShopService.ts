@@ -300,28 +300,33 @@ class SdkworkShopService implements ShopService {
     }
   }
 
-  async getCart(): Promise<CartItem[]> {
-    const result = await this.catalogClient().cart.items.list({ pageSize: 100 });
-    return extractAppSdkRecordsFromResult(result).map((record) =>
-      mapCartItem(record, this.selectedCartItemIds),
+  /**
+   * Cart operations ride the cart capability owner (`sdkwork-catalog`), whose
+   * app SDK does not expose cart operations yet. Until that surface ships, the
+   * cart reads as empty and every mutation refuses with a typed message rather
+   * than calling a retired `/app/v3/api/cart/*` route no authority serves.
+   */
+  private cartUnavailable(): never {
+    throw new Error(
+      'Cart operations are federated to sdkwork-catalog and have no app SDK surface yet.',
     );
   }
 
+  async getCart(): Promise<CartItem[]> {
+    this.cartUnavailable();
+  }
+
   async addToCart(productId: string, quantity = 1, skuId?: string): Promise<void> {
-    const resolvedSkuId = (skuId ?? productId).trim();
-    if (!resolvedSkuId) {
-      throw new Error('A sku id is required to add catalog cart items.');
-    }
-    await this.catalogClient().cart.items.create({
-      skuId: resolvedSkuId,
-      quantity: Math.max(1, quantity),
-    });
+    void productId;
+    void quantity;
+    void skuId;
+    this.cartUnavailable();
   }
 
   async updateCartItem(cartItemId: string, quantity: number): Promise<void> {
-    await this.catalogClient().cart.items.update(cartItemId, {
-      quantity: Math.max(1, quantity),
-    });
+    void cartItemId;
+    void quantity;
+    this.cartUnavailable();
   }
 
   async toggleCartItemSelection(cartItemId: string): Promise<void> {
@@ -343,8 +348,8 @@ class SdkworkShopService implements ShopService {
   }
 
   async removeCartItem(cartItemId: string): Promise<void> {
-    await this.catalogClient().cart.items.delete(cartItemId);
-    this.selectedCartItemIds.delete(cartItemId);
+    void cartItemId;
+    this.cartUnavailable();
   }
 
   async checkout(items?: CartItem[]): Promise<{

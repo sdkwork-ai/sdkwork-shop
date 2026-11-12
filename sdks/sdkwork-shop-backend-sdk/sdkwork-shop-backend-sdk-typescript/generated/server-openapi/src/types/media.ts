@@ -4,11 +4,11 @@ export interface Media {
   /** Primary key of the attachment. */
   id: string;
   /** Kind of row the attachment hangs off. The values are the storage vocabulary the `ck_commerce_product_media_owner_type` CHECK accepts; this surface calls the `spu` owner a *product* everywhere else (`/catalog/products/{productId}`), but the filter value stays `spu`. */
-  ownerType: 'spu' | 'sku' | 'category' | 'attribute_value';
+  ownerType: 'spu' | 'sku' | 'category' | 'attribute_value' | 'brand';
   /** Id of the owning row, in the vocabulary `ownerType` names. */
   ownerId: string;
   /** Role the resource plays on this owner. MEDIA_RESOURCE_SPEC section 5 fixes this set for the merchandise profile, and `ck_commerce_product_media_owner_role` narrows it for one owner kind: an `attribute_value` owner carries a swatch, so only `main_image`, `sku_image`, and `gallery_image` are accepted there. A role outside that subset is refused as a validation error, not by the column. */
-  mediaRole: 'main_image' | 'gallery_image' | 'detail_image' | 'sku_image' | 'video' | 'manual' | 'certificate';
+  mediaRole: 'main_image' | 'gallery_image' | 'detail_image' | 'sku_image' | 'video' | 'manual' | 'certificate' | 'logo';
   /** Drive node id the attachment references. It always equals `resourceSnapshot.id`: both are written from the same request field, and the reference is derived from the snapshot rather than accepted alongside it. */
   mediaResourceId: string;
   resourceSnapshot: MediaResource;

@@ -31,6 +31,16 @@ export interface Sku {
   barcode?: string | null;
   /** Ship weight in grams, the figure logistics rates a shipment from. ck_commerce_product_sku_weight pins >= 0. */
   weightGram?: string | null;
+  /** The quantity a single order must buy at least. Defaults to 1; ck_commerce_product_sku_min_order_quantity pins >= 1. */
+  minOrderQuantity: string;
+  /** The quantity a single order may buy at most, when capped. ck_commerce_product_sku_max_order_quantity refuses a cap below the minimum. */
+  maxOrderQuantity?: string | null;
+  /** The step the orderable quantity moves in (a case, a dozen). Defaults to 1. */
+  stepQuantity: string;
+  /** The unit the buyer names (a box, a can), when declared. */
+  packageUnit?: string | null;
+  /** How many sellable units one package holds, when declared. */
+  unitsPerPackage?: string | null;
   /** How one unit reaches the buyer. ck_commerce_product_sku_fulfillment_type is the authority for this set. */
   fulfillmentType: 'physical' | 'digital' | 'service' | 'membership_activation' | 'points_topup';
   /** Whether stock is tracked. ck_commerce_product_sku_inventory_tracking is the authority for this set. The stock itself is owned by sdkwork-inventory. */

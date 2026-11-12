@@ -37,6 +37,10 @@ packages:
   - "../sdkwork-appbase/packages/common/foundation/sdkwork-appbase-component-core"
   - "../sdkwork-ui/sdkwork-ui-mobile-react"
 
+overrides:
+  react: "catalog:"
+  react-dom: "catalog:"
+
 catalog:
   "@tailwindcss/vite": ^4.3.3
   react: ^19.2.8
