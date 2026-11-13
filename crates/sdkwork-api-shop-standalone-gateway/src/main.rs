@@ -1,5 +1,5 @@
 use sdkwork_api_shop_assembly::assemble_api_router_from_env;
-use sdkwork_web_bootstrap::{infra_public_path_prefixes, ApiModuleRegistry, ComposedApiAssembly};
+use sdkwork_web_bootstrap::{infra_public_path_prefixes, ApiModuleRegistry};
 
 #[tokio::main]
 async fn main() {
