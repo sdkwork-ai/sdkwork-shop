@@ -40,6 +40,8 @@ packages:
 overrides:
   react: "catalog:"
   react-dom: "catalog:"
+  "@types/react": "catalog:"
+  "@types/react-dom": "catalog:"
   # The shared ui packages pin lucide-react 1.7.0 while this workspace's catalog
   # carries the platform version; pinning the override here resolves every
   # lucide import to one instance, which is what makes the icon component types
