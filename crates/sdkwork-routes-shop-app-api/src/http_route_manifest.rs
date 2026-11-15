@@ -1,8 +1,8 @@
 use sdkwork_web_core::{HttpMethod, HttpRoute, HttpRouteManifest};
 
 const HTTP_ROUTES: &[HttpRoute] = &[
-    HttpRoute::dual_token(HttpMethod::Get, "/app/v3/api/shops", "shop", "list"),
-    HttpRoute::dual_token(
+    HttpRoute::dual_token_or_anonymous(HttpMethod::Get, "/app/v3/api/shops", "shop", "list"),
+    HttpRoute::dual_token_or_anonymous(
         HttpMethod::Get,
         "/app/v3/api/shops/{shopId}",
         "shop",

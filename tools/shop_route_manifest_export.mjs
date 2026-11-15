@@ -102,9 +102,16 @@ function operations(document, target, module, seenRoutes, seenOperationIds) {
   return result;
 }
 
+function rustAuthConstructor(operation) {
+  const authMode = operation['x-sdkwork-auth-mode'] ?? 'dual-token';
+  if (authMode === 'dual-token') return 'HttpRoute::dual_token';
+  if (authMode === 'dual-token-or-anonymous') return 'HttpRoute::dual_token_or_anonymous';
+  throw new Error(`unsupported x-sdkwork-auth-mode ${JSON.stringify(authMode)}`);
+}
+
 function renderRust(routes, functionName) {
   const entries = routes.map(({ method, operationPath, operation }) => [
-    '    HttpRoute::dual_token(',
+    `    ${rustAuthConstructor(operation)}(`,
     `        HttpMethod::${METHOD_VARIANTS[method]},`,
     `        ${JSON.stringify(operationPath)},`,
     '        "shop",',
