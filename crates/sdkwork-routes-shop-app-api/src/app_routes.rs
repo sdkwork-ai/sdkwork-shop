@@ -26,7 +26,7 @@ use crate::http_envelope::{
     not_found_response, shop_system_response, success_created_resource, success_list,
     success_paged_list, success_resource, unauthorized_response, validation_response,
 };
-use crate::subject::app_runtime_subject_from_extension;
+use crate::subject::{app_runtime_subject_from_extension, storefront_subject_from_extension};
 use sdkwork_merchandise_web_support::{
     expected_version_from_if_match, map_product, stale_version_response,
     success_resource_with_etag, CreateSpuBody, UpdateSpuBody,
@@ -1086,7 +1086,9 @@ async fn list_shops(
     runtime_context: Option<Extension<IamAppContext>>,
     Query(params): Query<ShopListParams>,
 ) -> Response {
-    let subject = match app_runtime_subject_from_extension(runtime_context) {
+    // Storefront browsing is declared optional-credential: fall back to the
+    // platform public tenant when no principal is present.
+    let subject = match storefront_subject_from_extension(runtime_context) {
         Ok(v) => v,
         Err(m) => return unauthorized_response(m),
     };
@@ -1115,7 +1117,9 @@ async fn retrieve_shop(
     runtime_context: Option<Extension<IamAppContext>>,
     Path(shop_id): Path<String>,
 ) -> Response {
-    let subject = match app_runtime_subject_from_extension(runtime_context) {
+    // Storefront browsing is declared optional-credential: fall back to the
+    // platform public tenant when no principal is present.
+    let subject = match storefront_subject_from_extension(runtime_context) {
         Ok(v) => v,
         Err(m) => return unauthorized_response(m),
     };

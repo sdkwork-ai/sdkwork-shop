@@ -249,7 +249,8 @@
         "x-sdkwork-server-request-id": true,
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops",
-        "x-sdkwork-permission": "commerce.shops.read"
+        "x-sdkwork-permission": "commerce.shops.read",
+        "x-sdkwork-auth-mode": "dual-token-or-anonymous"
       }
     },
     "/app/v3/api/shops/{shopId}": {
@@ -379,7 +380,8 @@
         "x-sdkwork-server-request-id": true,
         "x-sdkwork-source-route-crate": "sdkwork-routes-shop-app-api",
         "x-sdkwork-source": "sdkwork-routes-shop-app-api:/app/v3/api/shops/{shopId}",
-        "x-sdkwork-permission": "commerce.shops.read"
+        "x-sdkwork-permission": "commerce.shops.read",
+        "x-sdkwork-auth-mode": "dual-token-or-anonymous"
       }
     },
     "/app/v3/api/shops/current": {
