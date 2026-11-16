@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import React, { useState } from "react";
 import { ChevronRight, MapPin, Check, Plus, Edit2, ChevronLeft } from "lucide-react";
 import { useAddressStore } from "../store/useAddressStore";
-import { Address } from "../types";
+import type { Address } from "../types";
 
 interface AddressSelectorProps {
   onAddressChange?: (address: Address | null) => void;

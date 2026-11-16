@@ -779,25 +779,33 @@ fn map_row_json(row: &sqlx::postgres::PgRow) -> serde_json::Value {
     let mut map = serde_json::Map::new();
     for column in row.columns() {
         let name = column.name();
-        let key = snake_to_camel(name);
-        let value = if name == "id" {
-            serde_json::Value::String(string_cell(row, name))
-        } else if name.ends_with("_id") && name != "id" {
-            optional_string_cell(row, name)
-                .map(serde_json::Value::String)
-                .unwrap_or(serde_json::Value::Null)
-        } else if name.ends_with("_json") {
-            optional_string_cell(row, name)
-                .and_then(|text| serde_json::from_str(&text).ok())
-                .unwrap_or(serde_json::Value::Object(serde_json::Map::new()))
-        } else {
-            optional_string_cell(row, name)
-                .map(serde_json::Value::String)
-                .unwrap_or(serde_json::Value::Null)
-        };
-        map.insert(key, value);
+        map.insert(snake_to_camel(name), column_json_value(row, name));
     }
     serde_json::Value::Object(map)
+}
+
+/// Converts one column to JSON without assuming its SQL type.
+///
+/// The shop collections mix TEXT ids/timestamps, JSONB payloads, BOOLEAN flags
+/// and BIGINT counters. A plain string read silently turns every non-text
+/// column into `null`, so each candidate type is tried from the most specific
+/// to the most general.
+fn column_json_value(row: &sqlx::postgres::PgRow, name: &str) -> serde_json::Value {
+    if name.ends_with("_json") {
+        if let Ok(Some(value)) = row.try_get::<Option<serde_json::Value>, _>(name) {
+            return value;
+        }
+    }
+    if let Ok(Some(value)) = row.try_get::<Option<String>, _>(name) {
+        return serde_json::Value::String(value);
+    }
+    if let Ok(Some(value)) = row.try_get::<Option<i64>, _>(name) {
+        return serde_json::Value::from(value);
+    }
+    if let Ok(Some(value)) = row.try_get::<Option<bool>, _>(name) {
+        return serde_json::Value::Bool(value);
+    }
+    serde_json::Value::Null
 }
 
 fn snake_to_camel(name: &str) -> String {

@@ -18,3 +18,54 @@ tables:
   - name: commerce_shop_status_event
     lifecycle_status: active
     owner: shop-platform
+  - name: commerce_shop_verification
+    lifecycle_status: active
+    owner: shop-platform
+  - name: commerce_shop_qualification
+    lifecycle_status: active
+    owner: shop-platform
+  - name: commerce_shop_category_binding
+    lifecycle_status: active
+    owner: shop-platform
+  - name: commerce_shop_brand_authorization
+    lifecycle_status: active
+    owner: shop-platform
+  - name: commerce_shop_customer_service
+    lifecycle_status: active
+    owner: shop-platform
+  - name: commerce_shop_return_address
+    lifecycle_status: active
+    owner: shop-platform
+  - name: commerce_shop_shipping_template
+    lifecycle_status: active
+    owner: shop-platform
+  - name: commerce_shop_channel
+    lifecycle_status: active
+    owner: shop-platform
+  - name: commerce_shop_service_area
+    lifecycle_status: active
+    owner: shop-platform
+  - name: commerce_shop_business_hour
+    lifecycle_status: active
+    owner: shop-platform
+  - name: commerce_shop_fulfillment_profile
+    lifecycle_status: active
+    owner: shop-platform
+  - name: commerce_shop_settlement_profile
+    lifecycle_status: active
+    owner: shop-platform
+  - name: commerce_shop_deposit_account
+    lifecycle_status: active
+    owner: shop-platform
+  - name: commerce_shop_policy
+    lifecycle_status: active
+    owner: shop-platform
+  - name: commerce_shop_risk_signal
+    lifecycle_status: active
+    owner: shop-platform
+  - name: commerce_shop_readiness
+    lifecycle_status: active
+    owner: shop-platform
+  - name: commerce_shop_metric_snapshot
+    lifecycle_status: active
+    owner: shop-platform

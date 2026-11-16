@@ -1,5 +1,5 @@
 import React from "react";
-import { Trash2 } from "lucide-react";
+import { ShoppingBag, Trash2 } from "lucide-react";
 import { cn } from "@sdkwork/ui-mobile-react";
 import type { CartItem } from "../../types";
 import { formatCny } from "../../money";
@@ -24,19 +24,29 @@ export const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
       <div
         className={cn(
           "w-5 h-5 rounded-full border shrink-0 flex items-center justify-center cursor-pointer transition-colors",
-          item.checked ? "bg-[#FA5151] border-[#FA5151]" : "border-text-sub/40"
+          item.checked ? "bg-[var(--shopping-accent,#FA5151)] border-[var(--shopping-accent,#FA5151)]" : "border-text-sub/40"
         )}
         onClick={() => onToggleCheck(item.id, !item.checked)}
       >
         {item.checked && <div className="w-1.5 h-1.5 bg-white rounded-full" />}
       </div>
 
-      <img
-        src={item.product.image}
-        className="w-20 h-20 rounded-lg object-cover bg-chat-other-bg shrink-0 cursor-pointer"
-        onClick={() => onNavigateToProduct(item.productId)}
-        alt={item.product.title}
-      />
+      {item.product.image ? (
+        <img
+          src={item.product.image}
+          className="w-20 h-20 rounded-lg object-cover bg-chat-other-bg shrink-0 cursor-pointer"
+          onClick={() => onNavigateToProduct(item.productId)}
+          alt={item.product.title}
+        />
+      ) : (
+        <div
+          aria-hidden
+          className="w-20 h-20 rounded-lg bg-fill shrink-0 flex items-center justify-center cursor-pointer"
+          onClick={() => onNavigateToProduct(item.productId)}
+        >
+          <ShoppingBag className="w-7 h-7 text-text-sub/40" />
+        </div>
+      )}
 
       <div className="flex-1 flex flex-col min-w-0 py-1">
         <span
@@ -59,12 +69,12 @@ export const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
           </div>
         )}
         <div className="flex items-center justify-between mt-auto">
-          <span className="text-[#FA5151] font-bold text-[16px]">
+          <span className="text-[var(--shopping-accent,#FA5151)] font-bold text-[16px]">
             {formatCny(item.sku?.price || item.product.price, "zh-CN") ?? "--"}
           </span>
           <div className="flex items-center border border-border-color rounded-md overflow-hidden">
             <button
-              className="w-7 h-6 flex items-center justify-center bg-chat-other-bg text-[14px] active:bg-[#E5E5E5] transition-colors"
+              className="w-7 h-6 flex items-center justify-center bg-chat-other-bg text-[14px] active:bg-[var(--shopping-press,#E5E5E5)] transition-colors"
               onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
             >
               -
@@ -73,7 +83,7 @@ export const ShoppingCartItem: React.FC<ShoppingCartItemProps> = ({
               {item.quantity}
             </span>
             <button
-              className="w-7 h-6 flex items-center justify-center bg-chat-other-bg text-[14px] active:bg-[#E5E5E5] transition-colors"
+              className="w-7 h-6 flex items-center justify-center bg-chat-other-bg text-[14px] active:bg-[var(--shopping-press,#E5E5E5)] transition-colors"
               onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
             >
               +
