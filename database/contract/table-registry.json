@@ -1,4 +1,6 @@
 {
+  "schemaVersion": 1,
+  "kind": "sdkwork.database.table-registry",
   "tables": [
     {
       "table_name": "commerce_shop",
@@ -17,8 +19,108 @@
       "owner": "shop-platform",
       "compliance_level": "L2",
       "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_verification",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_qualification",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_category_binding",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_brand_authorization",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_customer_service",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_return_address",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_shipping_template",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_channel",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_service_area",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_business_hour",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_fulfillment_profile",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_settlement_profile",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_deposit_account",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_policy",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_risk_signal",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_readiness",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
+    },
+    {
+      "table_name": "commerce_shop_metric_snapshot",
+      "owner": "shop-platform",
+      "compliance_level": "L2",
+      "lifecycle_status": "active"
     }
-  ],
-  "schemaVersion": 1,
-  "kind": "sdkwork.database.table-registry"
+  ]
 }

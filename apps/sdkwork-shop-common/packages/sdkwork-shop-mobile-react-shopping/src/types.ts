@@ -61,6 +61,8 @@ export interface Product {
 export interface CartItem {
   id: string; // unique cart item id
   productId: string;
+  /** Shop the line belongs to (used for shop grouping in the cart). */
+  shopName?: string;
   product: Product;
   quantity: number;
   sku?: ProductSKU; // The selected SKU
