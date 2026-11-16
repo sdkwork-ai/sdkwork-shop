@@ -9,10 +9,16 @@ import { formatCny } from "../money";
 import type { CartItem } from "../types";
 import { useCartStore } from "../store/useCartStore";
 
-/** Host-overridable routes for the cart surface. */
+/** Host-overridable routes and chrome for the cart surface. */
 export interface ShoppingCartPageProps {
   checkoutPath?: string;
   productDetailPath?: string;
+  /**
+   * Viewport offset the settlement bar must clear at the bottom. Hosts with a
+   * fixed tab bar pass its height (the mall sets `--sdk-h5-tabbar-height`), so
+   * the bar sits directly on top of the tab bar instead of floating mid-page.
+   */
+  footerBottom?: string;
 }
 
 const ACCENT = "var(--shopping-accent,#FA5151)";
@@ -41,6 +47,7 @@ function groupCartItems(items: readonly CartItem[]) {
 export function ShoppingCartPage({
   checkoutPath = "/checkout",
   productDetailPath = "/product/:productId",
+  footerBottom = "calc(var(--sdk-h5-tabbar-height, 0px) + env(safe-area-inset-bottom, 0px))",
 }: ShoppingCartPageProps = {}) {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -150,7 +157,7 @@ export function ShoppingCartPage({
         </div>
       ) : (
         <>
-          <div className="flex flex-1 flex-col gap-2 px-3 pb-28">
+          <div className="flex flex-1 flex-col gap-2 px-3 pb-32">
             {groups.map((group) => (
               <div className="flex flex-col gap-2" key={group.shopId}>
                 {group.shopName ? (
@@ -162,21 +169,25 @@ export function ShoppingCartPage({
                 {group.items.map((item) => {
               const busy = busyId === item.id;
               return (
-                <div className="bg-chat-other-bg rounded-xl p-3 flex gap-3" key={item.id}>
+                <div className="relative flex gap-3 rounded-xl bg-chat-other-bg p-3" key={item.id}>
                   <button
                     aria-checked={item.checked}
                     aria-label={t("shopping.select_item", "选择商品")}
-                    className={cn(
-                      "mt-1 h-5 w-5 shrink-0 rounded-full border flex items-center justify-center",
-                      item.checked ? "border-transparent" : "border-text-sub/40 bg-transparent",
-                    )}
+                    className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center"
                     disabled={busy}
                     onClick={() => void run(item.id, () => toggleItemCheck(item.id, !item.checked))}
                     role="checkbox"
-                    style={item.checked ? { backgroundColor: ACCENT } : undefined}
                     type="button"
                   >
-                    {item.checked ? <span className="h-1.5 w-1.5 rounded-full bg-white" /> : null}
+                    <span
+                      className={cn(
+                        "flex h-5 w-5 items-center justify-center rounded-full border",
+                        item.checked ? "border-transparent" : "border-text-sub/40",
+                      )}
+                      style={item.checked ? { backgroundColor: ACCENT } : undefined}
+                    >
+                      {item.checked ? <span className="h-1.5 w-1.5 rounded-full bg-white" /> : null}
+                    </span>
                   </button>
 
                   <button
@@ -200,7 +211,7 @@ export function ShoppingCartPage({
 
                   <div className="flex min-w-0 flex-1 flex-col py-0.5">
                     <button
-                      className="line-clamp-2 text-left text-[14px] leading-tight text-text-main"
+                      className="flex min-h-10 items-center pr-10 text-left text-[14px] leading-tight text-text-main"
                       onClick={() => openProduct(item.productId)}
                       type="button"
                     >
@@ -213,26 +224,26 @@ export function ShoppingCartPage({
                           : item.sku.price}
                       </span>
                     ) : null}
-                    <div className="mt-auto flex items-center justify-between">
-                      <span className="text-[16px] font-bold" style={{ color: ACCENT }}>
+                    <div className="mt-auto flex items-center justify-between gap-3">
+                      <span className="whitespace-nowrap text-[15px] font-bold" style={{ color: ACCENT }}>
                         {formatCny(item.sku?.price ?? item.product.price, "zh-CN") ?? "--"}
                       </span>
                       <div className="flex items-center overflow-hidden rounded-md border border-border-color">
                         <button
                           aria-label={t("shopping.decrease", "减少数量")}
-                          className="flex h-6 w-7 items-center justify-center text-[14px] text-text-main active:bg-fill disabled:opacity-40"
+                          className="flex h-8 w-10 shrink-0 items-center justify-center text-[14px] text-text-main active:bg-fill disabled:opacity-40"
                           disabled={busy || item.quantity <= 1}
                           onClick={() => void run(item.id, () => updateQuantity(item.id, Math.max(1, item.quantity - 1)))}
                           type="button"
                         >
                           <Minus className="h-3 w-3" />
                         </button>
-                        <span className="flex h-6 w-8 items-center justify-center border-x border-border-color text-[13px] text-text-main">
+                        <span className="flex h-8 w-10 shrink-0 items-center justify-center border-x border-border-color text-[13px] text-text-main">
                           {item.quantity}
                         </span>
                         <button
                           aria-label={t("shopping.increase", "增加数量")}
-                          className="flex h-6 w-7 items-center justify-center text-[14px] text-text-main active:bg-fill disabled:opacity-40"
+                          className="flex h-8 w-10 shrink-0 items-center justify-center text-[14px] text-text-main active:bg-fill disabled:opacity-40"
                           disabled={busy}
                           onClick={() => void run(item.id, () => updateQuantity(item.id, item.quantity + 1))}
                           type="button"
@@ -245,7 +256,7 @@ export function ShoppingCartPage({
 
                   <button
                     aria-label={t("shopping.remove", "删除商品")}
-                    className="self-start p-1.5 text-text-sub/50 active:text-text-main"
+                    className="absolute right-1 top-1 flex h-10 w-10 items-center justify-center text-text-sub/50 active:text-text-main"
                     disabled={busy}
                     onClick={() => void run(item.id, () => removeFromCart([item.id]))}
                     type="button"
@@ -259,18 +270,21 @@ export function ShoppingCartPage({
             ))}
           </div>
 
-          <div className="sticky bottom-0 z-10 flex items-center gap-3 border-t border-border-color bg-chat-other-bg px-3 py-2.5">
+          <div
+            className="fixed inset-x-0 z-20 flex items-center gap-3 border-t border-border-color bg-chat-other-bg px-3 py-2.5"
+            style={{ bottom: footerBottom }}
+          >
             <button
               aria-checked={allChecked}
               aria-label={t("shopping.select_all", "全选")}
-              className="flex items-center gap-1.5 text-[12px] text-text-sub"
+              className="flex min-h-10 items-center gap-1.5 text-[12px] text-text-sub"
               onClick={() => void run("all", () => toggleAllCheck(!allChecked))}
               role="checkbox"
               type="button"
             >
               <span
                 className={cn(
-                  "flex h-4 w-4 items-center justify-center rounded-full border",
+                  "flex h-5 w-5 items-center justify-center rounded-full border",
                   allChecked ? "border-transparent" : "border-text-sub/40",
                 )}
                 style={allChecked ? { backgroundColor: ACCENT } : undefined}
@@ -286,7 +300,7 @@ export function ShoppingCartPage({
               </span>
             </div>
             <button
-              className="rounded-full px-5 py-2 text-[14px] font-medium text-white disabled:opacity-50"
+              className="min-h-10 rounded-full px-5 py-2 text-[14px] font-medium text-white disabled:opacity-50"
               disabled={checkedItems.length === 0}
               onClick={handleCheckout}
               style={{ backgroundColor: ACCENT }}

@@ -156,7 +156,7 @@ export function CheckoutPage() {
               ) : (
                 <div className="flex flex-col gap-2">
                   {addresses.map((address) => (
-                    <label className="flex cursor-pointer items-start gap-2" key={address.id}>
+                    <label className="flex min-h-11 cursor-pointer items-start gap-2 py-1" key={address.id}>
                       <input
                         checked={selectedAddressId === address.id}
                         name="checkout-address"
@@ -207,7 +207,7 @@ export function CheckoutPage() {
                 {t("shopping.checkout_delivery", "配送方式")}
               </h2>
               {DELIVERY_METHODS.map((method) => (
-                <label className="flex cursor-pointer items-start gap-2 py-1" key={method.code}>
+                <label className="flex min-h-11 cursor-pointer items-start gap-2 py-1" key={method.code}>
                   <input
                     checked={deliveryMethod === method.code}
                     name="checkout-delivery"
@@ -231,7 +231,7 @@ export function CheckoutPage() {
                   {t("shopping.checkout_payment", "支付方式")}
                 </h2>
                 {paymentMethods.map((method) => (
-                  <label className="flex cursor-pointer items-center gap-2 py-1" key={method.code}>
+                  <label className="flex min-h-11 cursor-pointer items-center gap-2 py-1" key={method.code}>
                     <input
                       checked={selectedMethodCode === method.code}
                       name="checkout-payment"
@@ -248,7 +248,7 @@ export function CheckoutPage() {
               <h2 className="mb-2 text-[14px] font-semibold text-text-main">
                 {t("shopping.checkout_coupon", "优惠券")}
               </h2>
-              <label className="flex cursor-pointer items-center gap-2 py-1">
+              <label className="flex min-h-11 cursor-pointer items-center gap-2 py-1">
                 <input
                   checked={!selectedCouponId}
                   name="checkout-coupon"
@@ -258,7 +258,7 @@ export function CheckoutPage() {
                 <span className="text-[13px] text-text-main">{t("shopping.checkout_coupon_none", "不使用优惠券")}</span>
               </label>
               {coupons.map((coupon) => (
-                <label className="flex cursor-pointer items-start gap-2 py-1" key={coupon.id}>
+                <label className="flex min-h-11 cursor-pointer items-start gap-2 py-1" key={coupon.id}>
                   <input
                     checked={selectedCouponId === coupon.id}
                     name="checkout-coupon"
@@ -279,11 +279,11 @@ export function CheckoutPage() {
               <h2 className="mb-2 text-[14px] font-semibold text-text-main">
                 {t("shopping.checkout_deduction", "抵扣")}
               </h2>
-              <label className="flex items-center gap-2 py-1 text-[13px] text-text-main">
+              <label className="flex min-h-11 items-center gap-2 py-1 text-[13px] text-text-main">
                 <input checked={useWallet} onChange={(event) => setUseWallet(event.target.checked)} type="checkbox" />
                 {t("shopping.use_wallet", "使用钱包余额")}
               </label>
-              <label className="flex items-center gap-2 py-1 text-[13px] text-text-main">
+              <label className="flex min-h-11 items-center gap-2 py-1 text-[13px] text-text-main">
                 <input checked={usePoints} onChange={(event) => setUsePoints(event.target.checked)} type="checkbox" />
                 {t("shopping.use_points", "使用积分")}
               </label>
@@ -299,7 +299,7 @@ export function CheckoutPage() {
                 placeholder={t("shopping.gift_card_placeholder", "礼品卡/券码（选填）")}
                 value={giftCardCode}
               />
-              <label className="mt-2 flex items-center gap-2 text-[13px] text-text-main">
+              <label className="mt-2 flex min-h-11 items-center gap-2 text-[13px] text-text-main">
                 <input checked={needInvoice} onChange={(event) => setNeedInvoice(event.target.checked)} type="checkbox" />
                 {t("shopping.need_invoice", "需要发票")}
               </label>
