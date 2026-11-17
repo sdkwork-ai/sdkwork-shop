@@ -693,6 +693,7 @@ export class CatalogProductsApi {
 
 export interface CatalogCategoriesManagementListParams {
   parentId?: string;
+  rootOnly?: boolean;
   status?: string;
   locale?: string;
   page?: number;
@@ -715,6 +716,7 @@ export class CatalogCategoriesManagementApi {
   async list(params?: CatalogCategoriesManagementListParams, requestOptions?: ApiRequestOptions): Promise<{ items: Category[]; pageInfo: PageInfo; }> {
     const query = buildQueryString([
       { name: 'parent_id', value: params?.parentId, style: 'form', explode: true, allowReserved: false },
+      { name: 'root_only', value: params?.rootOnly, style: 'form', explode: true, allowReserved: false },
       { name: 'status', value: params?.status, style: 'form', explode: true, allowReserved: false },
       { name: 'locale', value: params?.locale, style: 'form', explode: true, allowReserved: false },
       { name: 'page', value: params?.page, style: 'form', explode: true, allowReserved: false },
