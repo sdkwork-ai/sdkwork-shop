@@ -96,6 +96,32 @@ export function CheckoutPage() {
     void load();
   }, [load]);
 
+  // Re-price when the buyer changes a coupon, delivery option or asset
+  // deduction. The quote used to be fetched once on mount, so the summary kept
+  // showing the pre-discount total after any selection.
+  useEffect(() => {
+    if (!runtime || loading) {
+      return;
+    }
+    let active = true;
+    void runtime.createQuote({
+      ...(cartItemIds.length > 0 ? { cartItemIds } : {}),
+      ...(selectedCouponId ? { couponId: selectedCouponId } : {}),
+      deliveryMethod,
+      usePoints,
+      useWallet,
+    }).then((nextQuote) => {
+      if (active) {
+        setQuote(nextQuote);
+      }
+    }).catch(() => {
+      // The next explicit submit still surfaces a server error.
+    });
+    return () => {
+      active = false;
+    };
+  }, [cartItemIds, deliveryMethod, loading, runtime, selectedCouponId, usePoints, useWallet]);
+
   async function submit(): Promise<void> {
     if (!runtime || submitting) {
       return;

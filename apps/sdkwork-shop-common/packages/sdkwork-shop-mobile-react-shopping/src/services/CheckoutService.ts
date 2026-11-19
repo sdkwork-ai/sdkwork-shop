@@ -69,7 +69,13 @@ export interface ShopCheckoutRuntime {
   loadCoupons(): Promise<readonly ShopCheckoutCoupon[]>;
   loadItems(): Promise<readonly ShopCheckoutItem[]>;
   loadPaymentMethods(): Promise<readonly ShopCheckoutPaymentMethod[]>;
-  createQuote(input: { cartItemIds?: string[] }): Promise<ShopCheckoutQuote>;
+  createQuote(input: {
+    cartItemIds?: string[];
+    couponId?: string;
+    deliveryMethod?: string;
+    usePoints?: boolean;
+    useWallet?: boolean;
+  }): Promise<ShopCheckoutQuote>;
   submit(input: ShopCheckoutSubmitInput): Promise<{ nextUrl: string; warnings?: readonly string[] }>;
 }
 
